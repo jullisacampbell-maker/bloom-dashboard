@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bloom OS Dashboard V5</title>
+  <style>
+    :root {
+      --bg: #fbf7f1;
+      --card: #fffdf9;
+      --text: #332a24;
+      --muted: #7b6f67;
+      --accent: #d8997f;
+      --accent-dark: #b9775d;
+      --soft: #f2dfd4;
+      --green: #7f9d7a;
+      --border: #eadbd0;
+      --shadow: 0 14px 35px rgba(69, 45, 31, .08);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top left, #fff5ed 0, var(--bg) 40%, #f8efe8 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      padding: 28px 18px 16px;
+      max-width: 1180px;
+      margin: auto;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -0.05em; }
+    .tagline { margin: 8px 0 0; color: var(--muted); font-size: 1.02rem; }
+    .date-pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 12px 16px;
+      box-shadow: var(--shadow);
+      color: var(--muted);
+      font-weight: 700;
+    }
+    main {
+      max-width: 1180px;
+      margin: auto;
+      padding: 12px 18px 40px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+    }
+    @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+    .card {
+      background: rgba(255,253,249,.92);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .card h2 { margin: 0 0 12px; font-size: 1.25rem; }
+    .sub { color: var(--muted); margin: -5px 0 14px; font-size: .95rem; }
+    .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    @media (max-width: 650px) { .grid2 { grid-template-columns: 1fr; } }
+    label { display: block; font-size: .85rem; font-weight: 800; margin-bottom: 6px; color: #5b4b41; }
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fffaf5;
+      padding: 11px 12px;
+      font: inherit;
+      color: var(--text);
+      outline: none;
+    }
+    textarea { min-height: 82px; resize: vertical; }
+    input:focus, textarea:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(216,153,127,.16); }
+    button {
+      border: 0;
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      padding: 11px 15px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(185, 104, 75, .18);
+    }
+    button.secondary { background: #fff7f0; color: var(--accent-dark); border: 1px solid var(--border); box-shadow: none; }
+    button.green { background: var(--green); }
+    .actions { display:flex; flex-wrap: wrap; gap: 9px; margin-top: 12px; }
+    .week { display: grid; grid-template-columns: repeat(7, minmax(130px, 1fr)); gap: 10px; overflow-x: auto; padding-bottom: 6px; }
+    .day { min-height: 170px; background: #fffaf5; border: 1px solid var(--border); border-radius: 18px; padding: 12px; }
+    .day h3 { margin:0 0 8px; font-size: .95rem; }
+    .day textarea { min-height: 120px; font-size: .92rem; }
+    .checklist { display: grid; gap: 9px; }
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fffaf5;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 10px 12px;
+    }
+    .check input { width: auto; transform: scale(1.2); }
+    .progress-wrap { background: var(--soft); height: 14px; border-radius: 999px; overflow: hidden; margin: 12px 0 4px; }
+    .progress { height: 100%; background: var(--green); width: 0%; transition: width .25s ease; }
+    .small { font-size: .82rem; color: var(--muted); }
+    .span2 { grid-column: span 2; }
+    @media (max-width: 900px) { .span2 { grid-column: span 1; } }
+    .list { display: grid; gap: 8px; margin-top: 10px; }
+    .item { display:flex; gap:8px; align-items:center; background:#fffaf5; border:1px solid var(--border); border-radius:14px; padding:9px; }
+    .item span { flex:1; }
+    .item button { padding: 7px 10px; box-shadow:none; }
+    footer { max-width: 1180px; margin: -20px auto 30px; padding: 0 18px; color: var(--muted); font-size:.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>Bloom OS</h1>
+        <p class="tagline">Your home, homeschool, meals, and week in one gentle command center.</p>
+      </div>
+      <div class="date-pill" id="todayDate"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Build My Week</h2>
+      <p class="sub">Add what is already happening, then press build. Everything saves on this device.</p>
+      <div class="grid2">
+        <div>
+          <label>Must-do appointments / events</label>
+          <textarea id="events" placeholder="Therapy Wed 7 PM, swim lesson, birthdays..."></textarea>
+        </div>
+        <div>
+          <label>Top priorities this week</label>
+          <textarea id="priorities" placeholder="CEO Hour, homeschool, laundry, grocery reset..."></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button onclick="buildWeek()">Build My Week</button>
+        <button class="secondary" onclick="clearWeek()">Clear week boxes</button>
+      </div>
+      <div class="week" id="weekGrid"></div>
+    </section>
+
+    <aside class="card">
+      <h2>Today</h2>
+      <p class="sub">The question: what needs my attention right now?</p>
+      <div class="checklist" id="todayChecks">
+        <label class="check"><input type="checkbox" data-save="check_morning"> Morning reset</label>
+        <label class="check"><input type="checkbox" data-save="check_homeschool"> Homeschool block</label>
+        <label class="check"><input type="checkbox" data-save="check_meal"> Dinner decided</label>
+        <label class="check"><input type="checkbox" data-save="check_laundry"> Laundry touchpoint</label>
+        <label class="check"><input type="checkbox" data-save="check_ceo"> Bloom CEO Hour</label>
+      </div>
+      <div class="progress-wrap"><div class="progress" id="progressBar"></div></div>
+      <div class="small" id="progressText">0% complete</div>
+    </aside>
+
+    <section class="card">
+      <h2>Meals</h2>
+      <div class="grid2">
+        <div><label>Breakfast</label><input id="breakfast" placeholder="Muffins, eggs, oatmeal..."></div>
+        <div><label>Lunch</label><input id="lunch" placeholder="Leftovers, snack plates..."></div>
+        <div class="span2"><label>Dinner</label><input id="dinner" placeholder="Tacos, salmon, family meal kit..."></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Grocery List</h2>
+      <div class="grid2">
+        <input id="groceryInput" placeholder="Add grocery item">
+        <button onclick="addItem('grocery')">Add grocery</button>
+      </div>
+      <div class="list" id="groceryList"></div>
+    </section>
+
+    <section class="card">
+      <h2>Homeschool Hub</h2>
+      <div class="grid2">
+        <div><label>Bible / Circle Time</label><input id="bible" placeholder="Tiny Truths, calendar, weather..."></div>
+        <div><label>Reading</label><input id="reading" placeholder="Hooked on Phonics, read-aloud..."></div>
+        <div><label>Math / Writing</label><input id="mathWriting" placeholder="Flashcards, wipeable pages..."></div>
+        <div><label>Sensory / Outside</label><input id="sensory" placeholder="Pool, water table, kinetic sand..."></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Bloom CEO Hour</h2>
+      <p class="sub">One focused money-making action, not a hundred scattered ideas.</p>
+      <div class="grid2">
+        <div><label>Revenue task</label><input id="revenueTask" placeholder="Amazon post, Gumroad update, TikTok caption..."></div>
+        <div><label>Done by</label><input id="doneBy" placeholder="Tonight after kids bed"></div>
+      </div>
+    </section>
+
+    <section class="card span2">
+      <h2>Save + Move Your Data</h2>
+      <p class="sub">V5 saves automatically in this browser using local storage.</p>
+      <div class="actions">
+        <button class="green" onclick="exportData()">Export backup</button>
+        <button class="secondary" onclick="document.getElementById('importFile').click()">Import backup</button>
+        <button class="secondary" onclick="resetAll()">Reset everything</button>
+        <input type="file" id="importFile" accept="application/json" style="display:none" onchange="importData(event)">
+      </div>
+      <p class="small">Tip: add this file to your phone or Google Drive, then open it in Safari/Chrome and save to your Home Screen.</p>
+    </section>
+  </main>
+
+  <footer>Bloom OS Dashboard V5 · Built for Jullisa Blooms · Saves locally on this device.</footer>
+
+  <script>
+    const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    const fields = ['events','priorities','breakfast','lunch','dinner','bible','reading','mathWriting','sensory','revenueTask','doneBy'];
+    const listKeys = ['grocery'];
+
+    function todayLabel() {
+      const d = new Date();
+      document.getElementById('todayDate').textContent = d.toLocaleDateString(undefined, { weekday:'long', month:'long', day:'numeric' });
+    }
+
+    function makeWeek() {
+      const grid = document.getElementById('weekGrid');
+      grid.innerHTML = '';
+      days.forEach(day => {
+        const wrap = document.createElement('div');
+        wrap.className = 'day';
+        wrap.innerHTML = `<h3>${day}</h3><textarea id="week_${day}" placeholder="Plan ${day}..."></textarea>`;
+        grid.appendChild(wrap);
+      });
+    }
+
+    function save() {
+      const data = {};
+      fields.forEach(id => data[id] = document.getElementById(id)?.value || '');
+      days.forEach(day => data['week_' + day] = document.getElementById('week_' + day)?.value || '');
+      document.querySelectorAll('[data-save]').forEach(el => data[el.dataset.save] = el.checked);
+      listKeys.forEach(k => data[k + 'List'] = JSON.parse(localStorage.getItem('bloom_' + k + 'List') || '[]'));
+      localStorage.setItem('bloomOS_v5', JSON.stringify(data));
+      updateProgress();
+    }
+
+    function load() {
+      const data = JSON.parse(localStorage.getItem('bloomOS_v5') || '{}');
+      fields.forEach(id => { if(document.getElementById(id)) document.getElementById(id).value = data[id] || ''; });
+      days.forEach(day => { const el = document.getElementById('week_' + day); if(el) el.value = data['week_' + day] || ''; });
+      document.querySelectorAll('[data-save]').forEach(el => el.checked = !!data[el.dataset.save]);
+      listKeys.forEach(k => renderList(k));
+      updateProgress();
+    }
+
+    function buildWeek() {
+      const events = document.getElementById('events').value.trim();
+      const priorities = document.getElementById('priorities').value.trim();
+      const meal = document.getElementById('dinner').value.trim();
+      const suggestions = {
+        Mon: 'Home reset + light homeschool\n' + priorities,
+        Tue: 'Errands / grocery touchpoint\nDinner: ' + meal,
+        Wed: 'Homeschool + appointments\n' + events,
+        Thu: 'CEO Hour + laundry reset\n' + priorities,
+        Fri: 'Family cleanup + easy dinner\nDinner: ' + meal,
+        Sat: 'Flexible family day / outdoor projects',
+        Sun: 'Prep meals, clothes, homeschool, and calendar'
+      };
+      days.forEach(day => {
+        const el = document.getElementById('week_' + day);
+        if(!el.value.trim()) el.value = suggestions[day].trim();
+      });
+      save();
+    }
+
+    function clearWeek() {
+      days.forEach(day => document.getElementById('week_' + day).value = '');
+      save();
+    }
+
+    function addItem(key) {
+      const input = document.getElementById(key + 'Input');
+      const value = input.value.trim();
+      if(!value) return;
+      const list = JSON.parse(localStorage.getItem('bloom_' + key + 'List') || '[]');
+      list.push({ text: value, done: false });
+      localStorage.setItem('bloom_' + key + 'List', JSON.stringify(list));
+      input.value = '';
+      renderList(key);
+      save();
+    }
+
+    function renderList(key) {
+      const list = JSON.parse(localStorage.getItem('bloom_' + key + 'List') || '[]');
+      const box = document.getElementById(key + 'List');
+      if(!box) return;
+      box.innerHTML = '';
+      list.forEach((item, idx) => {
+        const row = document.createElement('div');
+        row.className = 'item';
+        row.innerHTML = `<input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleItem('${key}', ${idx})"><span>${item.text}</span><button class="secondary" onclick="deleteItem('${key}', ${idx})">Remove</button>`;
+        box.appendChild(row);
+      });
+    }
+
+    function toggleItem(key, idx) {
+      const list = JSON.parse(localStorage.getItem('bloom_' + key + 'List') || '[]');
+      list[idx].done = !list[idx].done;
+      localStorage.setItem('bloom_' + key + 'List', JSON.stringify(list));
+      renderList(key);
+      save();
+    }
+
+    function deleteItem(key, idx) {
+      const list = JSON.parse(localStorage.getItem('bloom_' + key + 'List') || '[]');
+      list.splice(idx, 1);
+      localStorage.setItem('bloom_' + key + 'List', JSON.stringify(list));
+      renderList(key);
+      save();
+    }
+
+    function updateProgress() {
+      const checks = Array.from(document.querySelectorAll('[data-save]'));
+      const done = checks.filter(c => c.checked).length;
+      const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById('progressText').textContent = pct + '% complete';
+    }
+
+    function exportData() {
+      save();
+      const payload = localStorage.getItem('bloomOS_v5') || '{}';
+      const blob = new Blob([payload], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'bloom-os-v5-backup.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        localStorage.setItem('bloomOS_v5', e.target.result);
+        load();
+      };
+      reader.readAsText(file);
+    }
+
+    function resetAll() {
+      if(confirm('Reset all Bloom OS data on this device?')) {
+        localStorage.removeItem('bloomOS_v5');
+        localStorage.removeItem('bloom_groceryList');
+        location.reload();
+      }
+    }
+
+    document.addEventListener('input', e => {
+      if(e.target.matches('input, textarea, select')) save();
+    });
+    document.addEventListener('change', e => {
+      if(e.target.matches('[data-save]')) save();
+    });
+
+    todayLabel();
+    makeWeek();
+    load();
+  </script>
+</body>
+</html>
