@@ -2988,9 +2988,9 @@ function askBloomGo(destination) {
     return;
   }
   if (destination === "community") {
-    showTab("help", document.getElementById("tab-help-btn"));
-    showToast("Community space link coming soon");
+    window.open("https://discord.gg/hdG4kNBzVG", "_blank");
     return;
+}
   }
   if (destination === "support") {
     window.location.href = "contact.html";
