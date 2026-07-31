@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bloom OS Public — Launch Candidate</title>
-  <meta name="description" content="Bloom OS is the calm family command center for homeschool moms and mompreneurs. Plan meals, homeschool, your week, and your business goals — all in one place. Free to try.">
-  <meta name="keywords" content="homeschool mom planner, family command center, meal planning app, mom dashboard, mompreneur tools, homeschool hub, weekly planner for moms">
-  <meta name="author" content="Bloom OS">
+  <title>Bloom OS — The Family Operating System</title>
+  <meta name="description" content="Bloom OS is the family operating system — one calm place for home, meals, routines, goals, and family life. Plan your week, meals, and home rhythm in one dashboard. Free to try.">
+  <meta name="keywords" content="family operating system, family planner, meal planning app, weekly planner, home organization, family dashboard, routines app, Bloom OS">
+  <meta name="author" content="Bloom Technologies">
   <meta name="theme-color" content="#4a7858">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Bloom OS">
@@ -15,14 +15,14 @@
   <link rel="icon" type="image/png" href="bloom-icon.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234a7858'/><text y='.9em' font-size='72' x='12'>&#x1F33F;</text></svg>">
   <meta property="og:title" content="Bloom OS — Your week, handled.">
-  <meta property="og:description" content="Stop being the family project manager. Bloom OS plans your meals, homeschool, weekly schedule and business goals in one calm dashboard. Free to try.">
+  <meta property="og:description" content="One calm place for home, meals, routines, goals, and family life. Bloom OS helps you build your week around real life. Free to try.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jullisacampbell-maker.github.io/bloom-dashboard/">
   <meta property="og:image" content="https://jullisacampbell-maker.github.io/bloom-dashboard/og-image.png">
   <meta property="og:site_name" content="Bloom OS">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Bloom OS — Your week, handled.">
-  <meta name="twitter:description" content="The family command center for homeschool moms and mompreneurs. Free to try.">
+  <meta name="twitter:description" content="Bloom OS — The Family Operating System. One calm place for home, meals, routines, goals, and family life. Free to try.">
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -53,6 +53,7 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    #features, #pricing, #faq, #how-it-works { scroll-margin-top: 80px; }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
 
     /* DARK MODE */
@@ -72,8 +73,10 @@
     .nav-logo-mark { width:34px;height:34px;border-radius:10px;background:var(--sage);display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 3px 8px rgba(74,120,88,.25); }
     .nav-logo-name { font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:var(--text);letter-spacing:-.02em; }
     .nav-links { display:flex;align-items:center;gap:6px; }
-    .nav-link { font-size:13px;font-weight:600;color:var(--text-soft);background:none;border:none;cursor:pointer;padding:7px 14px;border-radius:var(--r-pill);font-family:'Inter',sans-serif;transition:all .15s; }
+    .nav-link { font-size:13px;font-weight:600;color:var(--text-soft);background:none;border:none;cursor:pointer;padding:7px 14px;border-radius:var(--r-pill);font-family:'Inter',sans-serif;transition:all .15s;min-height:44px; }
     .nav-link:hover { color:var(--text);background:var(--surface); }
+    .nav-link:focus-visible, .nav-cta:focus-visible, .btn-hero:focus-visible, .btn-ghost:focus-visible, .plan-btn:focus-visible { outline:2px solid var(--sage-mid);outline-offset:2px; }
+    @media(max-width:700px) { .nav-links{flex-wrap:wrap;justify-content:flex-end} .nav-inner{height:auto;min-height:60px;padding:10px 0} }
     .nav-cta { background:var(--sage);color:#fff;border:none;border-radius:var(--r-pill);padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;box-shadow:0 4px 12px rgba(74,120,88,.25);transition:all .17s; }
     .nav-cta:hover { background:var(--sage-dark);transform:translateY(-1px); }
 
@@ -206,6 +209,9 @@
     .flabel { font-size:12px;font-weight:700;color:var(--text-soft);display:block;margin-bottom:5px;letter-spacing:.04em; }
     .grid2 { display:grid;grid-template-columns:1fr 1fr;gap:14px; }
     @media(max-width:600px) { .grid2{grid-template-columns:1fr} }
+    .smart-today-panel { display:grid;grid-template-columns:1fr 1fr;gap:14px; }
+    @media(max-width:600px) { .smart-today-panel{grid-template-columns:1fr} }
+    .footer-tagline { display:block;margin-top:4px;font-size:11px;color:var(--text-muted);font-style:italic; }
     .fspan2 { grid-column:1/-1; }
 
     /* === BUTTONS === */
@@ -344,7 +350,9 @@
     .child-name-input:focus { border-bottom-color:var(--sage);outline:none; }
 
     /* === HELP ACCORDION === */
-    .help-item { border-bottom:1px solid var(--border-soft);padding:0; }
+    .landing-faq-section { max-width:1120px;margin:auto;padding:56px 28px 72px; }
+    .landing-faq-section .help-item { background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);margin-bottom:10px;padding:0 14px; }
+    .landing-faq-section .help-item:last-child { margin-bottom:0; }
     .help-q { display:flex;justify-content:space-between;align-items:center;padding:14px 4px;cursor:pointer;font-weight:600;font-size:14px;color:var(--text); }
     .help-q .hq-arrow { font-size:12px;color:var(--text-muted);transition:transform .2s; }
     .help-q.open .hq-arrow { transform:rotate(180deg); }
@@ -453,17 +461,17 @@
   <!-- NAV -->
   <nav class="marketing-nav">
     <div class="nav-inner">
-      <a class="nav-logo" href="#">
+      <a class="nav-logo" href="#" onclick="event.preventDefault();scrollToTopLanding();" aria-label="Bloom OS home">
         <div class="nav-logo-mark">🌿</div>
         <span class="nav-logo-name">Bloom OS</span>
       </a>
       <div class="nav-links">
-        <button class="nav-link" onclick="scrollToSection('features')">Features</button>
-        <button class="nav-link" onclick="scrollToSection('pricing')">Pricing</button>
-        <button class="nav-link" onclick="window.location.href='help.html'">Help</button>
-        <button class="nav-link" onclick="window.location.href='faq.html'">FAQ</button>
-        <button class="nav-link dark-toggle-btn" onclick="toggleDarkMode()" id="darkToggleNav" title="Toggle dark mode">🌙</button>
-        <button class="nav-cta" onclick="enterApp('free')">Try free</button>
+        <button type="button" class="nav-link" onclick="scrollToSection('features')">Features</button>
+        <button type="button" class="nav-link" onclick="scrollToSection('pricing')">Pricing</button>
+        <button type="button" class="nav-link" onclick="openHelpCenter()">Help</button>
+        <button type="button" class="nav-link" onclick="scrollToSection('faq')">FAQ</button>
+        <button type="button" class="nav-link dark-toggle-btn" onclick="toggleDarkMode()" id="darkToggleNav" title="Toggle dark mode">🌙</button>
+        <button type="button" class="nav-cta" onclick="enterApp('free')">Try Bloom OS Free</button>
       </div>
     </div>
   </nav>
@@ -471,17 +479,17 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
-      <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>Family Command Center for Homeschool Moms</div>
+      <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>The Family Operating System</div>
       <h1 class="hero-h1">Your week,<br><em>handled.</em></h1>
-      <p class="hero-p">Stop being the invisible project manager for your entire family. Bloom OS plans your meals, homeschool, weekly schedule, and business goals — all in one calm dashboard built for moms who do it all.</p>
+      <p class="hero-p">One calm place for home, meals, routines, goals, and family life. Stop rebuilding your family's plan every morning. Teach Bloom your family once — update it when life changes.</p>
       <div class="hero-actions">
-        <button class="btn-hero" onclick="enterApp('free')">Start free — no card needed</button>
-        <button class="btn-ghost" onclick="scrollToSection('pricing')">See plans</button>
+        <button type="button" class="btn-hero" onclick="enterApp('free')">Start with Bloom</button>
+        <button type="button" class="btn-ghost" onclick="scrollToSection('how-it-works')">See How Bloom Works</button>
       </div>
       <div class="hero-trust">
-        <span>Free forever tier</span>
+        <span>Try Bloom OS Free</span>
         <div class="hero-trust-dot"></div>
-        <span>No credit card to start</span>
+        <span>No card needed</span>
         <div class="hero-trust-dot"></div>
         <span>Cancel anytime</span>
       </div>
@@ -498,7 +506,7 @@
         </div>
         <div class="mockup-row">
           <div class="mockup-check">v</div>
-          <span class="mockup-label done">Bible time + circle time</span>
+          <span class="mockup-label done">Kids' activities + afternoon routine</span>
         </div>
         <div class="mockup-row">
           <div class="mockup-check empty"></div>
@@ -515,38 +523,41 @@
   </section>
 
   <!-- FEATURES -->
-  <section class="features-strip" id="features">
+  <section class="features-strip" id="how-it-works">
     <div class="features-inner">
-      <div class="features-label">Everything your family week needs in one place</div>
+      <div class="features-label">How Bloom Works</div>
+      <p style="text-align:center;font-size:15px;color:var(--text-soft);max-width:680px;margin:0 auto 12px;line-height:1.65;">Teach Bloom your family once. Build your week around real life. Update the system when life changes.</p>
+      <div class="features-label" id="features" style="margin-top:36px;">Home. Meals. Routines. Goals. Family life.</div>
+      <p style="text-align:center;font-size:13px;color:var(--text-soft);max-width:640px;margin:-20px auto 28px;line-height:1.6;">Bloom OS is the family operating system from Bloom Technologies. Need dedicated homeschool planning? Bloom Academy is the homeschool operating system.</p>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">📅</div>
           <div class="feature-h">Weekly Build Engine</div>
-          <p class="feature-p">Fill in your priorities once and Bloom auto-generates your entire week — meals, school, CEO Hour, and home reset included.</p>
+          <p class="feature-p">Start with what is fixed — appointments and commitments first. Then build the rest of the week around real life: meals, home, family, goals, work, and rest.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🥗</div>
-          <div class="feature-h">Meal Planning</div>
+          <div class="feature-h">Meals + Grocery</div>
           <p class="feature-p">Breakfast, lunch, and dinner planned for every day. Connected grocery list so you never forget what you actually need.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📚</div>
-          <div class="feature-h">Homeschool Hub</div>
-          <p class="feature-p">Bible time, phonics, math, and sensory play — all mapped out. Per-child lesson plans for families with multiple learners.</p>
+          <div class="feature-h">Homeschool Module</div>
+          <p class="feature-p">Optional module for families who track learning at home. Bloom Academy is the dedicated homeschool operating system — this keeps a light connection inside Bloom OS.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">💰</div>
           <div class="feature-h">CEO Hour Tracker</div>
-          <p class="feature-p">Protect your revenue-generating time every day. Track your income goals, content tasks, and business wins in one place.</p>
+          <p class="feature-p">Protect your revenue-generating time every day. Track income goals, content tasks, and business wins in one place.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎯</div>
-          <div class="feature-h">Goal + Streak Tracker</div>
-          <p class="feature-p">30-day habit grids for your wake time, fitness, Bible reading, and CEO Hour. See your streaks grow and stay consistent.</p>
+          <div class="feature-h">Goals + Habits</div>
+          <p class="feature-p">30-day habit grids for wake time, fitness, devotion, and CEO Hour. See your streaks grow and stay consistent.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🏠</div>
-          <div class="feature-h">Homemaking Hub</div>
+          <div class="feature-h">Home Rhythm</div>
           <p class="feature-p">Daily, bi-weekly, monthly, quarterly, and yearly home tasks — with progress bars, check-off, and custom task input.</p>
         </div>
       </div>
@@ -564,7 +575,7 @@
       <div class="plan-card">
         <div class="plan-name">Free</div>
         <div class="plan-price">$0<span>/mo</span></div>
-        <p class="plan-desc">A calm start. See if Bloom fits before committing.</p>
+        <p class="plan-desc">A useful starting point for organizing family life.</p>
         <div class="plan-features">
           <div class="plan-feat"><span class="feat-check">v</span> Today view + priorities</div>
           <div class="plan-feat"><span class="feat-check">v</span> Basic weekly overview</div>
@@ -575,7 +586,7 @@
           <div class="plan-feat"><span class="feat-lock">-</span> Homeschool Hub</div>
           <div class="plan-feat"><span class="feat-lock">-</span> CEO Hour tracker</div>
         </div>
-        <button class="plan-btn plan-btn-outline" onclick="enterApp('free')">Start free</button>
+        <button type="button" class="plan-btn plan-btn-outline" onclick="enterApp('free')">Try Bloom OS Free</button>
       </div>
 
       <!-- PRO -->
@@ -583,7 +594,7 @@
         <div class="popular-badge">Most Popular</div>
         <div class="plan-name">Pro</div>
         <div class="plan-price">$12<span>/mo</span></div>
-        <p class="plan-desc">The full dashboard. Your whole life in one calm place.</p>
+        <p class="plan-desc">More powerful planning and personalization for your household.</p>
         <div class="plan-features">
           <div class="plan-feat"><span class="feat-check">v</span> Everything in Free</div>
           <div class="plan-feat"><span class="feat-check">v</span> Weekly Build Engine</div>
@@ -594,18 +605,18 @@
           <div class="plan-feat"><span class="feat-check">v</span> Habit streak tracker</div>
           <div class="plan-feat"><span class="feat-check">v</span> Daily Bloom Insight</div>
         </div>
-        <button class="plan-btn plan-btn-primary" onclick="goToStripe('pro-trial')">Start 7-day free trial</button>
+        <button type="button" class="plan-btn plan-btn-primary" onclick="goToStripe('pro-trial')">Start 7-day free trial</button>
       </div>
 
       <!-- FAMILY -->
       <div class="plan-card">
         <div class="plan-name">Family</div>
         <div class="plan-price">$19<span>/mo</span></div>
-        <p class="plan-desc">Everything in Pro, built for your whole crew.</p>
+        <p class="plan-desc">The fuller shared family experience — child profiles, Family Hub, and more.</p>
         <div class="plan-features">
           <div class="plan-feat"><span class="feat-check">v</span> Everything in Pro</div>
           <div class="plan-feat"><span class="feat-check">v</span> Child profiles per kid</div>
-          <div class="plan-feat"><span class="feat-check">v</span> Individual homeschool plans</div>
+          <div class="plan-feat"><span class="feat-check">v</span> Per-child plans (Homeschool module)</div>
           <div class="plan-feat"><span class="feat-check">v</span> Reading logs per child</div>
           <div class="plan-feat"><span class="feat-check">v</span> Swim progress tracking</div>
           <div class="plan-feat"><span class="feat-check">v</span> Chore charts</div>
@@ -613,7 +624,7 @@
           <div class="plan-feat"><span class="feat-check">v</span> Shared grocery lists</div>
           <div class="plan-feat"><span class="feat-check">v</span> Early access to new features</div>
         </div>
-        <button class="plan-btn plan-btn-gold" onclick="goToStripe('family')">Get Family Plan</button>
+        <button type="button" class="plan-btn plan-btn-gold" onclick="goToStripe('family')">Get Family Plan</button>
       </div>
     </div>
   </section>
@@ -622,24 +633,37 @@
   <section class="proof-section">
     <div class="proof-inner">
       <div class="section-eyebrow">Early love</div>
-      <h2 class="section-h2">Moms who found their calm</h2>
+      <h2 class="section-h2">Families who found their calm</h2>
       <div class="testimonials">
         <div class="testimonial">
           <div class="stars">* * * * *</div>
-          <div class="testimonial-quote">"I used to have 6 different apps and still forgot things. Bloom OS is the first tool that actually matches how my brain works as a homeschool mom."</div>
-          <div class="testimonial-author">Beta tester, homeschool mom of 2</div>
+          <div class="testimonial-quote">"I used to have 6 different apps and still forgot things. Bloom OS is the first tool that actually matches how my family week works — home, meals, and everything in between."</div>
+          <div class="testimonial-author">Beta tester, parent of 2</div>
         </div>
         <div class="testimonial">
           <div class="stars">* * * * *</div>
           <div class="testimonial-quote">"The Weekly Build Engine is everything. I fill it in Sunday night and my whole week feels possible instead of overwhelming."</div>
-          <div class="testimonial-author">Early user, mompreneur</div>
+          <div class="testimonial-author">Early user, work-from-home parent</div>
         </div>
         <div class="testimonial">
           <div class="stars">* * * * *</div>
-          <div class="testimonial-quote">"Finally something that gets that I'm running a home AND a business AND homeschooling. Bloom sees all of it."</div>
-          <div class="testimonial-author">Early user, work-from-home mom</div>
+          <div class="testimonial-quote">"Finally something that sees the whole picture — home rhythm, meals, goals, and the business I run alongside family life. Bloom gets it."</div>
+          <div class="testimonial-author">Early user, family CEO</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- LANDING FAQ -->
+  <section class="landing-faq-section" id="faq" aria-labelledby="landing-faq-heading">
+    <div class="proof-inner">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-h2" id="landing-faq-heading">Common questions</h2>
+      <p class="section-sub" style="margin-bottom:28px;">Quick answers before you start.</p>
+      <div id="landingFaqAccordion"></div>
+      <p style="text-align:center;margin-top:24px;">
+        <a href="faq.html" class="btn-ghost" style="display:inline-block;text-decoration:none;padding:12px 24px;">View all FAQs</a>
+      </p>
     </div>
   </section>
 
@@ -648,7 +672,9 @@
     <div class="marketing-footer">
       <span class="footer-logo">🌿 Bloom OS</span>
       <span class="footer-legal">
-        Built for moms who do it all. &copy; 2025 Bloom OS. All rights reserved.
+        Bloom OS is part of Bloom Technologies.
+        <span class="footer-tagline">Technology designed to help families flourish.</span>
+        &copy; 2025 Bloom Technologies. All rights reserved.
         <br>
         <a href="help.html" style="color:var(--text-soft);margin-right:10px;">Help</a>
         <a href="faq.html" style="color:var(--text-soft);margin-right:10px;">FAQ</a>
@@ -668,7 +694,7 @@
   <div class="confetti-burst" id="confettiBurst"></div>
   <div class="success-icon">🌿</div>
   <div class="success-h" id="successHeadline">Welcome to Bloom OS Pro!</div>
-  <p class="success-sub">Your account is active and everything is unlocked — your week, meals, homeschool, CEO Hour, and goals are all ready for you.</p>
+  <p class="success-sub">Your plan is active and everything is unlocked — your week, meals, home rhythm, CEO Hour, and goals are all ready for you.</p>
   <p style="font-size:13px;font-weight:700;color:var(--text-soft);margin-bottom:10px;">What should we call you?</p>
   <div class="success-name-row">
     <input type="text" id="successNameInput" placeholder="Your first name" maxlength="40"/>
@@ -696,8 +722,8 @@
           </div>
         </div>
         <div class="app-greeting" id="appGreeting">Good morning</div>
-        <div class="app-headline" id="appHeadline">Your week is handled.</div>
-        <div class="app-sub" id="appSub">Your calm command center</div>
+        <div class="app-headline" id="appHeadline">Your day, handled.</div>
+        <div class="app-sub" id="appSub">The Family Operating System</div>
         <div class="member-badge" id="memberBadgeRow" style="text-align:left;margin-top:6px;display:none;"></div>
       </div>
       <div class="app-header-right">
@@ -726,7 +752,7 @@
       <button class="app-tab active" id="tab-today-btn" onclick="showTab('today',this)">Today</button>
       <button class="app-tab" id="tab-profile-btn" onclick="showTab('profile',this)">Profile</button>
       <button class="app-tab" id="tab-week-btn" onclick="showTabGated('week',this,'pro')">My Week</button>
-      <button class="app-tab" id="tab-meals-btn" onclick="showTabGated('meals',this,'pro')">Meals</button>
+      <button class="app-tab" id="tab-meals-btn" onclick="showTabGated('meals',this,'pro')">Meals + Grocery</button>
       <button class="app-tab" id="tab-homeschool-btn" onclick="showTabGated('homeschool',this,'pro')">Homeschool</button>
       <button class="app-tab" id="tab-ceo-btn" onclick="showTabGated('ceo',this,'pro')">CEO Hour</button>
       <button class="app-tab" id="tab-goals-btn" onclick="showTab('goals',this)">Goals</button>
@@ -751,32 +777,32 @@
     </div>
 
     <div class="card span2">
-      <div class="card-eye">Smart Today</div>
-      <h2>Your day at a glance</h2>
-      <p class="card-sub-txt">A personalized view built from your onboarding and weekly plan.</p>
-      <div id="smartTodayPanel" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-        <div style="background:var(--surface2);border:1px solid var(--border-soft);border-radius:14px;padding:14px;">
-          <div class="card-eye" style="margin-bottom:6px;">Homeschool Today</div>
-          <div id="smartSchool" style="font-size:13.5px;color:var(--text-soft);line-height:1.6;">Fill in your onboarding profile to see a personalized homeschool view here.</div>
-        </div>
+      <div class="card-eye">Today Command Center</div>
+      <h2>Here's what matters today</h2>
+      <p class="card-sub-txt">Your day, handled. A personalized view built from your profile and weekly plan.</p>
+      <div id="smartTodayPanel" class="smart-today-panel">
         <div style="background:var(--surface2);border:1px solid var(--border-soft);border-radius:14px;padding:14px;">
           <div class="card-eye" style="margin-bottom:6px;">Meals Today</div>
-          <div id="smartMeals" style="font-size:13.5px;color:var(--text-soft);line-height:1.6;">Fill in your onboarding profile to see today's meals here.</div>
+          <div id="smartMeals" style="font-size:13.5px;color:var(--text-soft);line-height:1.6;">Fill in your profile to see today's meals here.</div>
+        </div>
+        <div style="background:var(--surface2);border:1px solid var(--border-soft);border-radius:14px;padding:14px;">
+          <div class="card-eye" style="margin-bottom:6px;">Home + Garden</div>
+          <div id="smartHome" style="font-size:13.5px;color:var(--text-soft);line-height:1.6;">Fill in your home rhythm to see today's home tasks here.</div>
         </div>
         <div style="background:var(--surface2);border:1px solid var(--border-soft);border-radius:14px;padding:14px;">
           <div class="card-eye" style="margin-bottom:6px;">CEO Hour</div>
           <div id="smartCeo" style="font-size:13.5px;color:var(--text-soft);line-height:1.6;">Add your revenue task to see your CEO focus here.</div>
         </div>
         <div style="background:var(--surface2);border:1px solid var(--border-soft);border-radius:14px;padding:14px;">
-          <div class="card-eye" style="margin-bottom:6px;">Home + Garden</div>
-          <div id="smartHome" style="font-size:13.5px;color:var(--text-soft);line-height:1.6;">Fill in your home rhythm to see today's home tasks here.</div>
+          <div class="card-eye" style="margin-bottom:6px;">Schedule + Activities</div>
+          <div id="smartSchool" style="font-size:13.5px;color:var(--text-soft);line-height:1.6;">Add your family profile to see today's schedule and activities here.</div>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-eye">Today</div>
-      <h2>Priorities</h2>
+      <div class="card-eye">Top Priorities</div>
+      <h2>What matters most today</h2>
       <p class="card-sub-txt">What are your top 3 things today?</p>
       <div class="checklist" id="todayChecklist">
         <div class="check-row" onclick="toggleCheck(this)"><div class="check-box"><span class="check-tick">v</span></div><div class="check-lbl" contenteditable="true">Click to edit your first priority</div></div>
@@ -802,9 +828,9 @@
   <!-- PROFILE + MEMORY TAB -->
   <div class="app-main" id="view-profile" style="display:none">
     <section class="card span2">
-      <div class="card-eye">Bloom Identity</div>
-      <h2>Ask once. Remember forever.</h2>
-      <p class="card-sub-txt">Bloom remembers this profile after onboarding and only asks for updates when life changes.</p>
+      <div class="card-eye">Bloom Profile</div>
+      <h2>Teach Bloom your family once.</h2>
+      <p class="card-sub-txt">Home. Meals. Routines. Goals. Family life. Your profile gives Bloom context about household rhythm, children, schedules, meals, home routines, work goals, and priorities — update it when life changes.</p>
       <div class="profile-summary-grid" id="profileSummaryGrid"></div>
       <div class="actions">
         <button class="btn btn-primary" onclick="openProfileEditor()">Edit Bloom profile</button>
@@ -814,11 +840,11 @@
 
     <section class="card span2">
       <div class="card-eye">Life Change Mode</div>
-      <h2>Something changed?</h2>
-      <p class="card-sub-txt">Update Bloom when your routine, schedule, family rhythm, or goals change. Bloom will adjust future suggestions.</p>
+      <h2>When life changes, Bloom changes with you.</h2>
+      <p class="card-sub-txt">Update Bloom when your routine, schedule, family rhythm, or goals shift. Bloom will adjust future suggestions.</p>
       <div class="life-change-grid">
         <button class="life-change-btn" onclick="lifeChangePrompt('New baby or child update')"><strong>New baby / child update</strong><span>Adjust routines, meals, and home load.</span></button>
-        <button class="life-change-btn" onclick="lifeChangePrompt('School change')"><strong>School change</strong><span>Update homeschool or outside school rhythm.</span></button>
+        <button class="life-change-btn" onclick="lifeChangePrompt('School change')"><strong>Schedule change</strong><span>Update children's activities or family appointments.</span></button>
         <button class="life-change-btn" onclick="lifeChangePrompt('New job or work schedule')"><strong>Work schedule</strong><span>Adjust CEO Hour and energy windows.</span></button>
         <button class="life-change-btn" onclick="lifeChangePrompt('Moved or home change')"><strong>Home change</strong><span>Update homemaking and errands.</span></button>
         <button class="life-change-btn" onclick="lifeChangePrompt('New activity or appointment')"><strong>New activity</strong><span>Sports, therapy, lessons, church, or clubs.</span></button>
@@ -830,11 +856,11 @@
 
     <section class="card">
       <div class="card-eye">Data + Backup</div>
-      <h2>Your Bloom memory</h2>
-      <p class="card-sub-txt">Export a backup before major updates or switching devices.</p>
+      <h2>Protect your Bloom data</h2>
+      <p class="card-sub-txt">Bloom currently saves your information in this browser. Use Export Backup to protect your data before clearing browser storage or moving to another device.</p>
       <div class="actions">
-        <button class="btn btn-primary" onclick="exportCurrentProfile()">Export current profile</button>
-        <button class="btn btn-secondary" onclick="document.getElementById('profileImportFile').click()">Import profile</button>
+        <button class="btn btn-primary" onclick="exportCurrentProfile()">Export Backup</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('profileImportFile').click()">Import Backup</button>
         <input type="file" id="profileImportFile" accept="application/json" style="display:none" onchange="importProfiles(event)">
       </div>
     </section>
@@ -846,15 +872,15 @@
     <section class="card span2">
       <div class="card-eye">Weekly Build Engine</div>
       <h2>Build My Week</h2>
-      <p class="card-sub-txt">Add what's already happening — Bloom fills in the rest.</p>
+      <p class="card-sub-txt">Start with what is fixed. Then build the rest of the week around real life — appointments first, then meals, home, family, personal goals, work, and rest.</p>
       <div class="onboarding-card">
         <div class="card-eye">Personalization Profile</div>
-        <h2 style="font-size:1.05rem;margin-bottom:4px;">Make Bloom smarter before you build</h2>
-        <p class="mini-note">Your profile teaches Bloom your family rhythm, homeschool needs, meals, business focus, and energy windows.</p>
+        <h2 style="font-size:1.05rem;margin-bottom:4px;">Teach Bloom your family once</h2>
+        <p class="mini-note">Your profile teaches Bloom your household rhythm, schedules, meals, home routines, work goals, and energy windows. Teach Bloom once — update it when life changes.</p>
         <p class="onboarding-status" id="onboardingStatus">Profile not yet set up</p>
         <div class="grid2" style="margin-top:14px;">
           <div><label class="flabel">Family rhythm</label><textarea id="onboardRhythm" placeholder="When do kids wake? Partner schedule? Best CEO windows?"></textarea></div>
-          <div><label class="flabel">Kids + homeschool needs</label><textarea id="onboardKids" placeholder="Ages, subjects, curriculum, any special needs?"></textarea></div>
+          <div><label class="flabel">Kids + dependents</label><textarea id="onboardKids" placeholder="Ages, activities, schedules, care needs"></textarea></div>
           <div><label class="flabel">Meals + grocery style</label><textarea id="onboardMeals" placeholder="Budget, allergies, meal kit? Quick or batch cook?"></textarea></div>
           <div><label class="flabel">Business focus</label><textarea id="onboardBusiness" placeholder="What do you sell or create? Income goal?"></textarea></div>
           <div><label class="flabel">Home rhythm</label><textarea id="onboardHome" placeholder="Laundry days, errands, cleaning rhythm?"></textarea></div>
@@ -896,9 +922,9 @@
   <!-- MEALS TAB -->
   <div class="app-main" id="view-meals" style="display:none">
     <section class="card span2">
-      <div class="card-eye">Meals Planner</div>
+      <div class="card-eye">Meals + Grocery</div>
       <h2>Weekly Meals</h2>
-      <p class="card-sub-txt">Plan breakfast, lunch, and dinner for your whole family.</p>
+      <p class="card-sub-txt">Plan breakfast, lunch, and dinner — plus your grocery list for the week.</p>
       <div class="grid2">
         <div><label class="flabel">Default breakfast</label><input type="text" id="breakfast" placeholder="e.g. Smoothies + muffins"/></div>
         <div><label class="flabel">Default lunch</label><input type="text" id="lunch" placeholder="e.g. Leftovers / snack plates"/></div>
@@ -997,7 +1023,7 @@
   <!-- GOALS TAB -->
   <div class="app-main" id="view-goals" style="display:none">
     <section class="card span2">
-      <div class="card-eye">Goal Tracker</div>
+      <div class="card-eye">Goals + Habits</div>
       <h2>Your Weekly Goals</h2>
       <div class="grid2">
         <div><label class="flabel">Wake goal</label><input type="text" id="wakeGoal" placeholder="e.g. 5:00 AM"/></div>
@@ -1028,9 +1054,9 @@
   <!-- HOMEMAKING TAB -->
   <div class="app-main" id="view-homemaking" style="display:none">
     <section class="card span2">
-      <div class="card-eye">Homemaking Hub</div>
+      <div class="card-eye">Home Rhythm</div>
       <h2>Your Home Rhythm</h2>
-      <p class="card-sub-txt">Check off tasks as you go. Each section has a progress bar and custom task input.</p>
+      <p class="card-sub-txt">Daily through yearly home tasks — check off as you go. Each section has a progress bar and custom task input.</p>
       <div id="homemakingAccordion"></div>
     </section>
   </div><!-- /homemaking -->
@@ -1084,7 +1110,7 @@
       <div class="card-eye">Troubleshooting</div>
       <h2>Common Issues</h2>
       <div style="font-size:13.5px;color:var(--text-soft);line-height:1.7;">
-        <p style="margin-bottom:10px;"><strong style="color:var(--text);">My data disappeared.</strong> Bloom OS saves to your browser's local storage. Clearing browser data or switching browsers will reset it. Consider copying important notes.</p>
+        <p style="margin-bottom:10px;"><strong style="color:var(--text);">My data disappeared.</strong> Bloom currently saves your information in this browser. Clearing browser data or switching browsers will reset it. Use Export Backup in your Profile tab to protect your data before making changes.</p>
         <p style="margin-bottom:10px;"><strong style="color:var(--text);">The app feels slow.</strong> Try refreshing the page. If issues persist, clear cache and reload.</p>
         <p style="margin-bottom:10px;"><strong style="color:var(--text);">My plan didn't unlock.</strong> If you paid but your plan isn't showing, check your email for a Stripe receipt and contact support with your email address.</p>
         <p><strong style="color:var(--text);">Dark mode won't save.</strong> Make sure your browser allows local storage for this site (not in private/incognito mode).</p>
@@ -1105,8 +1131,8 @@
     </section>
     <section class="card">
       <div class="card-eye">Community</div>
-      <h2>Connect with Bloom Moms</h2>
-      <p style="font-size:14px;color:var(--text-soft);margin-bottom:16px;line-height:1.6;">Join our community of homeschool moms, mompreneurs, and family CEOs. Share wins, ask questions, and get support.</p>
+      <h2>Connect with Bloom Families</h2>
+      <p style="font-size:14px;color:var(--text-soft);margin-bottom:16px;line-height:1.6;">Join our community of families organizing home, meals, routines, and goals. Share wins, ask questions, and get support.</p>
       <a href="https://discord.gg/hdG4kNBzVG" target="_blank" class="btn btn-secondary">
   Join our community
 </a>
@@ -1132,7 +1158,7 @@
   <div class="ask-bloom-body">
     <button class="ask-action" onclick="askBloomGo('help')"><span class="ask-action-icon">📚</span><span><strong>Open Help Center</strong><span>FAQs, troubleshooting, and setup answers.</span></span></button>
     <button class="ask-action" onclick="askBloomGo('profile')"><span class="ask-action-icon">🌿</span><span><strong>Update Bloom Profile</strong><span>Tell Bloom when life changes.</span></span></button>
-    <button class="ask-action" onclick="askBloomGo('community')"><span class="ask-action-icon">👩‍👩‍👧</span><span><strong>Community Space</strong><span>Get support from Bloom moms.</span></span></button>
+    <button class="ask-action" onclick="askBloomGo('community')"><span class="ask-action-icon">👩‍👩‍👧</span><span><strong>Community Space</strong><span>Get support from other Bloom families.</span></span></button>
     <button class="ask-action" onclick="askBloomGo('support')"><span class="ask-action-icon">🛟</span><span><strong>Contact Support</strong><span>Get help with billing or account issues.</span></span></button>
   </div>
 </div>
@@ -1148,8 +1174,8 @@
     <div class="memory-modal-head">
       <div>
         <div class="card-eye">Bloom Profile</div>
-        <h2 style="font-family:'Lora',serif;margin-bottom:6px;">Teach Bloom once.</h2>
-        <p class="card-sub-txt" style="margin-bottom:0;">Update this only when life changes. Bloom will use it to personalize your Today view and weekly plan.</p>
+        <h2 style="font-family:'Lora',serif;margin-bottom:6px;">Teach Bloom your family once.</h2>
+        <p class="card-sub-txt" style="margin-bottom:0;">Tell Bloom about your household rhythm, children, schedules, meals, home routines, work goals, and priorities. Update only when life changes.</p>
       </div>
       <button class="memory-close" onclick="closeProfileEditor()">x</button>
     </div>
@@ -1157,9 +1183,9 @@
       <div><label class="flabel">Your name</label><input id="profile_name" placeholder="Your first name"></div>
       <div><label class="flabel">Profile type</label><input value="Client User" disabled><input type="hidden" id="profile_mode" value="Client User"></div>
       <div><label class="flabel">Partner / household</label><textarea id="profile_partner" placeholder="Partner name, work rhythm, household notes"></textarea></div>
-      <div><label class="flabel">Children / dependents</label><textarea id="profile_kids" placeholder="Names, ages, learning needs, activities"></textarea></div>
+      <div><label class="flabel">Children / dependents</label><textarea id="profile_kids" placeholder="Names, ages, activities, care needs"></textarea></div>
       <div><label class="flabel">Family rhythm</label><textarea id="profile_rhythm" placeholder="Wake times, bedtimes, fixed appointments, best planning windows"></textarea></div>
-      <div><label class="flabel">School rhythm</label><textarea id="profile_school" placeholder="Homeschool schedule, subjects, curriculum, outside school needs"></textarea></div>
+      <div><label class="flabel">Children's schedules</label><textarea id="profile_school" placeholder="Activities, lessons, appointments, care schedules"></textarea></div>
       <div><label class="flabel">Meals + grocery style</label><textarea id="profile_meals" placeholder="Budget, shortcuts, allergies, safe foods, delivery services"></textarea></div>
       <div><label class="flabel">Home rhythm</label><textarea id="profile_home" placeholder="Laundry, cleaning, errands, garden, pool, pets, reset days"></textarea></div>
       <div><label class="flabel">Business / personal goals</label><textarea id="profile_business" placeholder="CEO Hour, income goals, content platforms, offers"></textarea></div>
@@ -1177,19 +1203,19 @@
   <div class="modal">
     <button class="modal-close" onclick="closeUpgrade()">x</button>
     <div class="modal-h">Unlock the full Bloom OS</div>
-    <p class="modal-sub">Choose the plan that fits your family. Cancel anytime.</p>
+    <p class="modal-sub">Choose the plan that fits your household. Cancel anytime.</p>
     <div class="modal-plans">
       <div class="modal-plan" id="modalPlanPro" onclick="selectPlan('pro',this)">
         <div>
           <div class="modal-plan-name">Pro -- Most popular</div>
-          <div class="modal-plan-desc">Full dashboard - Meals - Homeschool - CEO Hour - Homemaking</div>
+          <div class="modal-plan-desc">Full household planning — Weekly Build, Meals + Grocery, CEO Hour, Home Rhythm, Goals + Habits, and optional Homeschool module</div>
         </div>
         <div class="modal-plan-price">$12<small>/mo</small></div>
       </div>
       <div class="modal-plan" id="modalPlanFamily" onclick="selectPlan('family',this)">
         <div>
           <div class="modal-plan-name">Family</div>
-          <div class="modal-plan-desc">Everything in Pro + child profiles, family hub, shared lists</div>
+          <div class="modal-plan-desc">Everything in Pro + child profiles, Family Hub, chore charts, and shared lists</div>
         </div>
         <div class="modal-plan-price">$19<small>/mo</small></div>
       </div>
@@ -1329,15 +1355,15 @@ var HOMEMAKING_SECTIONS = [
 var FAQ_ITEMS = [
   {
     q: "What is Bloom OS?",
-    a: "Bloom OS is a family command center designed for homeschool moms and mompreneurs. It combines your weekly planner, meal planning, homeschool hub, CEO Hour tracker, goals, and homemaking schedule all in one calm dashboard."
+    a: "Bloom OS is the family operating system — one calm place for home, meals, routines, goals, and family life. It combines your Today Command Center, Weekly Build Engine, Meals + Grocery, CEO Hour, Goals + Habits, and Home Rhythm in one dashboard. An optional Homeschool module is also available."
   },
   {
     q: "Is my data saved between sessions?",
-    a: "Yes -- Bloom OS saves everything to your browser's local storage. This means your data stays on your device and is available whenever you return. Note: clearing your browser data will reset the app."
+    a: "Yes — Bloom currently saves your information in this browser using local storage. Your data stays available when you return on the same device and browser. Use Export Backup in your Profile tab to protect your data before clearing browser storage or moving to another device."
   },
   {
     q: "What is the difference between Pro and Family?",
-    a: "Pro gives you the full dashboard -- Weekly Build Engine, meals, homeschool, CEO Hour, Homemaking Hub, goal tracker, and Daily Bloom Insights. Family adds everything in Pro plus child profiles, individual homeschool plans per child, reading logs, swim level tracking, chore charts, a family calendar, and shared grocery lists."
+    a: "Pro gives you the full household dashboard — Weekly Build Engine, Meals + Grocery, CEO Hour, Home Rhythm, Goals + Habits, Daily Bloom Insights, and the optional Homeschool module. Family adds everything in Pro plus child profiles, reading logs, swim level tracking, chore charts, a family calendar, shared grocery lists, and per-child plans in the Homeschool module."
   },
   {
     q: "How does the free trial work?",
@@ -1349,35 +1375,35 @@ var FAQ_ITEMS = [
   },
   {
     q: "What is the Weekly Build Engine?",
-    a: "The Weekly Build Engine generates your entire weekly plan automatically. You fill in your priorities, events, meals, homeschool focus, and business task -- Bloom builds out a day-by-day schedule across all sections of the app."
+    a: "The Weekly Build Engine generates your weekly plan around real life. Start with fixed appointments and commitments, then build out meals, home tasks, family needs, goals, work priorities, and rest. You fill in your priorities, events, and focus areas — Bloom builds a day-by-day schedule across the app."
   },
   {
-    q: "What are habit streaks?",
-    a: "Habit streaks are 30-day grids on the Goals tab for four core habits: Wake time, Fitness, Bible/devotion, and CEO Hour. Tap each day to mark it complete and watch your consistency grow over time."
+    q: "What are Goals + Habits?",
+    a: "Goals + Habits are 30-day streak grids on the Goals tab for four core habits: Wake time, Fitness, Bible/devotion, and CEO Hour. Tap each day to mark it complete and watch your consistency grow over time."
   },
   {
     q: "What is the Daily Bloom Insight?",
-    a: "The Daily Bloom Insight is a personalized motivational message shown at the top of your Today tab. It reads your current goal progress and surfaces an encouraging nudge based on your lowest-scoring area."
+    a: "The Daily Bloom Insight is a personalized motivational message shown at the top of your Today Command Center. It reads your current goal progress and surfaces an encouraging nudge based on your lowest-scoring area."
   },
   {
     q: "How do I add children to the Family Hub?",
-    a: "Go to the Family Hub tab and tap the Add child button. You can give each child an emoji avatar, name, reading log, swim level, and individual homeschool plan."
+    a: "Go to the Family Hub tab and tap the Add child button. You can give each child an emoji avatar, name, reading log, swim level, and a per-child plan in the Homeschool module."
   },
   {
     q: "Why is the app asking me to upgrade?",
-    a: "Some features -- including the Weekly Build Engine, Meals planner, Homeschool Hub, CEO Hour, Homemaking Hub, and Family Hub -- require a Pro or Family plan. Tap Upgrade to see pricing and start a free trial."
+    a: "Some features — including the Weekly Build Engine, Meals + Grocery, CEO Hour, Home Rhythm, Family Hub, and the optional Homeschool module — require a Pro or Family plan. Tap Upgrade to see pricing and start a free trial."
   }
 ];
 
 var BLOOM_INSIGHTS = [
   "Your consistency is your superpower. Even small steps forward today are building the life you are working toward.",
   "You are not behind. You are right on time for the season you are in. Keep going.",
-  "A calm mom creates a calm home. The most important thing you can do today is protect your peace.",
+  "A calm home starts with one clear priority. Protect your peace today.",
   "One priority completed is better than five started. Pick one and finish it.",
   "You are building something that matters -- for your family, your business, and yourself. Keep going.",
   "Progress is not always visible day to day, but it is always accumulating. Trust the process.",
   "Your CEO Hour is not selfish -- it is the engine that funds everything else you care about.",
-  "Homeschool does not have to be perfect to be powerful. Showing up is enough.",
+  "Showing up for your family today is enough. Progress beats perfection.",
   "Rest is productive. If you need to slow down today, that is wisdom, not weakness.",
   "You have already done hard things. Today is no different. You can handle what is in front of you."
 ];
@@ -1396,6 +1422,7 @@ function init() {
   renderStreakTrackers();
   renderHomemakingAccordion();
   renderFaqAccordion();
+  renderLandingFaq();
   renderWeekGrids();
   renderGroceryList();
   renderFamilyGroceryList();
@@ -1408,6 +1435,7 @@ function init() {
   checkSundayRollover();
   setupScrollTop();
   updatePlanUI();
+  handleLandingHash();
 }
 
 // ============================================================
@@ -1516,8 +1544,10 @@ function setupScrollTop() {
 // ENTER APP
 // ============================================================
 function enterApp(plan) {
-  if (plan && plan !== "free") {
-    if (!localStorage.getItem(PLAN_KEY)) {
+  if (plan === "free") {
+    localStorage.setItem(PLAN_KEY, "free");
+  } else if (plan && plan !== "free") {
+    if (!localStorage.getItem(PLAN_KEY) || localStorage.getItem(PLAN_KEY) === "free") {
       localStorage.setItem(PLAN_KEY, plan);
     }
     if (!localStorage.getItem(JOINED_KEY)) {
@@ -1688,9 +1718,56 @@ function showToast(msg) {
 // ============================================================
 // SCROLL TO SECTION (landing)
 // ============================================================
+function getStickyNavOffset() {
+  var nav = document.querySelector(".marketing-nav");
+  return nav ? nav.offsetHeight + 12 : 80;
+}
+
+function scrollToTopLanding() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (history.replaceState) {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
+}
+
 function scrollToSection(id) {
+  var landing = document.getElementById("landing");
+  if (!landing || landing.style.display === "none") {
+    return;
+  }
   var el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
+  if (!el) return;
+  var top = el.getBoundingClientRect().top + window.pageYOffset - getStickyNavOffset();
+  window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  if (history.replaceState) {
+    history.replaceState(null, "", "#" + id);
+  } else {
+    window.location.hash = id;
+  }
+}
+
+function handleLandingHash() {
+  var hash = (window.location.hash || "").replace("#", "");
+  if (!hash) return;
+  var landing = document.getElementById("landing");
+  if (!landing || landing.style.display === "none") return;
+  if (!document.getElementById(hash)) return;
+  setTimeout(function() { scrollToSection(hash); }, 120);
+}
+
+function openHelpCenter() {
+  window.location.href = "help.html";
+}
+
+function openInAppHelp() {
+  var landing = document.getElementById("landing");
+  var app = document.getElementById("app");
+  if (app && app.style.display !== "none") {
+    showTab("help", document.getElementById("tab-help-btn"));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+  openHelpCenter();
 }
 
 // ============================================================
@@ -1810,7 +1887,7 @@ function loadOnboarding() {
 
 function fillSampleDefaults() {
   document.getElementById("onboardRhythm").value = "Kids wake at 7am. Best CEO window is 9-10am and after 8pm.";
-  document.getElementById("onboardKids").value = "Two kids, ages 4 and 6. Curriculum: Sonlight + hands-on activities.";
+  document.getElementById("onboardKids").value = "Two kids, ages 4 and 6. Swim Wed, library Fri, early bedtimes.";
   document.getElementById("onboardMeals").value = "Budget-conscious, no allergies. Love sheet pan dinners and batch cooking on Sundays.";
   document.getElementById("onboardBusiness").value = "Online coaching and digital products. Monthly income goal: $3,000.";
   document.getElementById("onboardHome").value = "Laundry on Mondays and Thursdays. Grocery run on Saturdays.";
@@ -1853,9 +1930,9 @@ function updateSmartToday() {
   var day = new Date().toLocaleDateString("en-US", { weekday: "long" });
   if (schoolEl) {
     if (data.kids) {
-      schoolEl.innerHTML = "<strong>" + day + ":</strong> " + (localStorage.getItem("school_" + day) || "See Homeschool tab for today plan") + "<br><small style='color:var(--text-muted)'>" + data.kids.substring(0, 80) + "</small>";
+      schoolEl.innerHTML = "<strong>" + day + ":</strong> " + (localStorage.getItem("school_" + day) || "Open the Homeschool tab for today's learning plan") + "<br><small style='color:var(--text-muted)'>" + data.kids.substring(0, 80) + "</small>";
     } else {
-      schoolEl.textContent = "Fill in your onboarding profile to see your personalized homeschool view here.";
+      schoolEl.textContent = "Add your family profile to see today's schedule and activities here.";
     }
   }
   if (mealsEl) {
@@ -1962,7 +2039,7 @@ function buildWeek() {
     Tuesday: "Wake " + wakeGoal + " | " + fitnessGoal + "\n" + bible + "\n" + reading + " + " + mathW + "\nCEO Hour: content batch\nMeals: " + breakfast + " / " + lunch + " / " + dinner + "\nErrands + appointments",
     Wednesday: "Wake " + wakeGoal + " | " + fitnessGoal + "\n" + bible + "\n" + sensory + " day\nCEO Hour: email + follow-up\nMeals: " + breakfast + " / " + lunch + " / " + dinner + "\nMid-week reset",
     Thursday: "Wake " + wakeGoal + " | " + bibleGoal + "\n" + bible + "\n" + reading + " + " + mathW + "\nCEO Hour: " + ceoRev + "\nMeals: " + breakfast + " / " + lunch + " / " + dinner + "\nDeep clean one room",
-    Friday: "Wake " + wakeGoal + " | " + fitnessGoal + "\n" + bible + "\nFriday fun learning\nCEO Hour: review week wins\nMeals: " + breakfast + " / " + lunch + " / Takeout or easy dinner\nFamily movie night prep",
+    Friday: "Wake " + wakeGoal + " | " + fitnessGoal + "\n" + bible + "\nFriday fun activities\nCEO Hour: review week wins\nMeals: " + breakfast + " / " + lunch + " / Takeout or easy dinner\nFamily movie night prep",
     Saturday: "Rest morning | Family time\nGrocery run\nBatch cook for next week: " + dinner + "\nOutdoor activity: " + sensory + "\nHome reset + prep for Sunday",
     Sunday: "Church + family rest\nWeekly review + plan next week\nPriorities: " + priorities + "\nEvents ahead: " + events + "\nSet intentions for Monday"
   };
@@ -2454,6 +2531,37 @@ function addChore() {
 // ============================================================
 // FAQ ACCORDION
 // ============================================================
+function renderLandingFaq() {
+  var container = document.getElementById("landingFaqAccordion");
+  if (!container) return;
+  var html = "";
+  FAQ_ITEMS.slice(0, 6).forEach(function(item, i) {
+    html += "<div class=\"help-item\">";
+    html += "<div class=\"help-q\" role=\"button\" tabindex=\"0\" aria-expanded=\"false\" onclick=\"toggleLandingFaq(" + i + ",this)\" onkeydown=\"if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleLandingFaq(" + i + ",this);}\">";
+    html += "<span>" + item.q + "</span>";
+    html += "<span class=\"hq-arrow\">v</span>";
+    html += "</div>";
+    html += "<div class=\"help-a\" id=\"landing_faq_a_" + i + "\">" + item.a + "</div>";
+    html += "</div>";
+  });
+  container.innerHTML = html;
+}
+
+function toggleLandingFaq(idx, headerEl) {
+  var body = document.getElementById("landing_faq_a_" + idx);
+  if (!body) return;
+  var isOpen = body.classList.contains("open");
+  if (isOpen) {
+    body.classList.remove("open");
+    headerEl.classList.remove("open");
+    headerEl.setAttribute("aria-expanded", "false");
+  } else {
+    body.classList.add("open");
+    headerEl.classList.add("open");
+    headerEl.setAttribute("aria-expanded", "true");
+  }
+}
+
 function renderFaqAccordion() {
   var container = document.getElementById("faqAccordion");
   if (!container) return;
@@ -2979,7 +3087,7 @@ function closeAskBloom() {
 function askBloomGo(destination) {
   closeAskBloom();
   if (destination === "help") {
-    window.location.href = "help.html";
+    openInAppHelp();
     return;
   }
   if (destination === "profile") {
@@ -2990,7 +3098,6 @@ function askBloomGo(destination) {
   if (destination === "community") {
     window.open("https://discord.gg/hdG4kNBzVG", "_blank");
     return;
-}
   }
   if (destination === "support") {
     window.location.href = "contact.html";
