@@ -3,46 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Bloom OS FAQ</title>
+  <title>FAQ — Bloom Family Tech</title>
+  <link rel="stylesheet" href="assets/family-tech-v4.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">🌿 Bloom OS</a>
-      <a class="back" href="help.html">Help Center</a>
-    </div>
-  </nav>
+  <div id="bloom-eco-nav"></div>
   <main class="wrap">
     <section class="hero">
       <div class="eyebrow">FAQ</div>
       <h1>Frequently asked questions</h1>
-      <p class="sub">Quick answers for Bloom OS users.</p>
+      <p class="sub">Quick answers for Bloom Family Tech and Bloom Home.</p>
     </section>
 
-    <h2>What is Bloom OS?</h2>
-    <p>Bloom OS is the family operating system — one calm place for home, meals, routines, goals, and family life. Plan your day, week, meals, home rhythm, goals, and more in one dashboard.</p>
+    <h2>What is Bloom Family Tech?</h2>
+    <p>Bloom Family Tech is the customer-facing family platform for finding free curriculum, organizing My School, and running your household. Bloom OS powers Bloom Home — your personalized family dashboard for meals, routines, goals, and family life.</p>
 
-    <h2>Is Bloom OS free?</h2>
-    <p>Yes. The Free tier is a useful starting point for organizing family life. Pro and Family plans unlock additional planning, personalization, and family features.</p>
+    <h2>What is Bloom OS?</h2>
+    <p>Bloom OS is the family intelligence layer inside Bloom Family Tech. It helps Bloom Home understand your household rhythm and coordinate your week.</p>
+
+    <h2>Is Bloom free?</h2>
+    <p>Yes. The Free tier includes the Resource Vault, My School, and basic starter tools. Pro and Family plans unlock deeper personalization and whole-family coordination in Bloom Home.</p>
 
     <h2 id="data">Does my data save?</h2>
-    <p>Yes. Bloom currently saves your information in this browser using local storage. Your data stays available when you return on the same device and browser. Use Export Backup in your Profile tab to protect your data before clearing browser storage or moving to another device.</p>
+    <p>Yes. Bloom currently saves your information in this browser using local storage. Use Export Backup in your Bloom Home Profile tab to protect your data before clearing browser storage or moving to another device.</p>
 
     <h2>Can I use Bloom on another device?</h2>
-    <p>Your data is stored in the browser you use. To move to another device, export a backup from your Profile tab and import it on the new device. Bloom does not currently sync data automatically across devices.</p>
+    <p>Your data is stored in the browser you use. To move to another device, export a backup from Bloom Home and import it on the new device. Bloom does not currently sync data automatically across devices.</p>
 
     <h2>How do I upgrade?</h2>
-    <p>Choose Pro or Family from the upgrade screen in the app. Paid plan access is managed through Stripe.</p>
+    <p>Choose Pro or Family from the Plans page or the upgrade screen in Bloom Home. Paid plan access is managed through Stripe.</p>
 
     <h2>Can I cancel?</h2>
     <p>Yes. You can cancel a subscription anytime. Access continues through the end of your billing period.</p>
 
-    <div class="note">Still need help? Visit the contact page and send a support request.</div>
+    <div class="note">Still need help? <a href="contact.html">Contact support</a> at bloomfamilytech@gmail.com.</div>
     <div class="footer">
-      Bloom OS is part of Bloom Technologies.<br>
-      © Bloom Technologies.
+      <a href="help.html">Help Center</a> &nbsp;&middot;&nbsp;
+      <a href="index.html">Bloom Home</a><br>
+      Bloom Family Tech is built by Bloom Technologies.<br>
+      &copy; Bloom Technologies.
     </div>
   </main>
+  <script src="scripts/bloom-nav.js"></script>
+  <script>BloomNav.init({ module: "help", page: "help" });</script>
 </body>
 </html>

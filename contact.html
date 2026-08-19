@@ -3,22 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Contact Bloom OS Support</title>
+  <title>Contact — Bloom Family Tech</title>
+  <link rel="stylesheet" href="assets/family-tech-v4.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">🌿 Bloom OS</a>
-      <a class="back" href="help.html">Help Center</a>
-    </div>
-  </nav>
+  <div id="bloom-eco-nav"></div>
   <main class="wrap">
     <section class="hero">
       <div class="eyebrow">Support</div>
       <h1>Contact Bloom Support</h1>
-      <p class="sub">Need help with billing, your Bloom dashboard, data backup, or a technical issue? Start here.</p>
-      <a class="btn" href="mailto:TIbloomresearch@gmail.com?subject=Bloom%20OS%20Support%20Request">Email support</a>
+      <p class="sub">Need help with Bloom? Send us an email and we'll get back to you as soon as we can.</p>
+      <a class="btn" href="mailto:bloomfamilytech@gmail.com?subject=Bloom%20Family%20Tech%20Support%20Request">Email bloomfamilytech@gmail.com</a>
     </section>
 
     <h2>What to include</h2>
@@ -30,10 +26,18 @@
     </ul>
 
     <h2>Data backup reminder</h2>
-    <p>Bloom currently saves your information in this browser. If you are moving devices or troubleshooting data loss, mention whether you have an exported backup from your Profile tab.</p>
+    <p>Bloom currently saves your information in this browser. If you are moving devices or troubleshooting data loss, mention whether you have an exported backup from your Profile tab in Bloom Home.</p>
 
     <div class="note">Suggested response time: 1–2 business days.</div>
-    <div class="footer">© Bloom Technologies.</div>
+    <div class="footer">
+      <a href="help.html">Help Center</a> &nbsp;&middot;&nbsp;
+      <a href="index.html">Bloom Home</a><br>
+      Bloom Family Tech is built by Bloom Technologies.<br>
+      Bloom OS powers your personalized Bloom Home experience.<br>
+      &copy; Bloom Technologies.
+    </div>
   </main>
+  <script src="scripts/bloom-nav.js"></script>
+  <script>BloomNav.init({ module: "help", page: "help" });</script>
 </body>
 </html>

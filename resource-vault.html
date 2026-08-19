@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Resource Vault — Bloom Family Tech</title>
+  <meta name="description" content="Curated free homeschool resources. Find curriculum, add to My School, and build your rhythm—all in one place.">
+  <link rel="stylesheet" href="assets/family-tech-v4.css">
+</head>
+<body>
+<div id="bloom-eco-nav"></div>
+<div class="page-wrap">
+  <div class="topbar">
+    <div>
+      <div class="kicker">FREE RESOURCE VAULT</div>
+      <h1>Great free curriculum—without twenty open tabs.</h1>
+      <p class="lead">Find the resources. Build the rhythm. Start school with less overwhelm.</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-secondary" href="bloom-academy.html">Academy Home</a>
+      <a class="btn btn-secondary" href="plans.html">Plans</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow">START FREE WITH BLOOM</div>
+    <h2>Browse curated free homeschool resources, save what fits your child, and turn your choices into a simple starter schedule—all in one place.</h2>
+    <p class="lead">No paywall on the resource links. No giant directory to decode. Bloom helps you move from finding something to knowing how you will use it.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#vault">Explore Free Resources &#8594;</a>
+      <a class="btn btn-secondary" href="my-school.html">See How Bloom Works</a>
+    </div>
+    <div class="trust">
+      <div class="trustitem"><div class="trusticon">&#10003;</div><div><b>Curated, not dumped</b><span>Strong starting points instead of hundreds of tabs to sort through.</span></div></div>
+      <div class="trustitem"><div class="trusticon">&#8599;</div><div><b>Free means clear</b><span>Bloom clearly identifies free resources and where optional paid extras begin.</span></div></div>
+      <div class="trustitem"><div class="trusticon">&#10022;</div><div><b>Built to become a plan</b><span>Families can add resources to My School and eventually turn them into an actual weekly rhythm.</span></div></div>
+    </div>
+    <div class="freeflow">
+      <div class="flowstep"><div class="num">1</div><b>Find Resources</b><span>Browse by subject, grade, format, and parent effort.</span></div>
+      <div class="flowstep"><div class="num">2</div><b>Add to My School</b><span>Collect the curriculum that actually fits your learner.</span></div>
+      <div class="flowstep"><div class="num">3</div><b>Build My Week</b><span>Give Bloom a few basics and get a starter schedule.</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="vault">
+    <div class="sectionhead">
+      <div>
+        <div class="eyebrow">FIND WHAT SERVES YOUR FAMILY</div>
+        <h2>Featured Starting Points</h2>
+        <p class="lead">Bloom does not win by having the most links. It wins by making good resources easier to understand and easier to use.</p>
+      </div>
+      <span class="pill">36 curated resources</span>
+    </div>
+    <div class="featured-grid" id="featuredGrid"></div>
+
+    <button type="button" class="catalog-toggle" id="catalogToggle">Browse all 36 curated resources &#8594;</button>
+    <div class="catalog-wrap collapsed" id="catalogWrap">
+      <div class="filterbar" id="filterBar"></div>
+      <div class="catalog-grid" id="catalogGrid"></div>
+    </div>
+  </section>
+
+  <div class="page-footer">
+    Questions? <a href="mailto:bloomfamilytech@gmail.com?subject=Bloom%20Family%20Tech%20Support">bloomfamilytech@gmail.com</a>
+    &nbsp;&middot;&nbsp;
+    <a href="index.html">Bloom Home</a>
+  </div>
+</div>
+<script src="scripts/bloom-resources-data.js"></script>
+<script src="scripts/bloom-school.js"></script>
+<script src="scripts/bloom-resources.js"></script>
+<script src="scripts/bloom-nav.js"></script>
+<script>
+  BloomNav.init({ module: "academy", page: "vault" });
+  BloomResources.initVaultPage();
+</script>
+</body>
+</html>

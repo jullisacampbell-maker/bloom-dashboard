@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starter Setup — Bloom Family Tech</title>
+  <meta name="description" content="Tell Bloom just enough to build a useful first week of homeschool.">
+  <link rel="stylesheet" href="assets/family-tech-v4.css">
+</head>
+<body>
+<div id="bloom-eco-nav"></div>
+<div class="page-wrap">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">STARTER SETUP</div>
+        <h1>Tell Bloom just enough to build a useful first week.</h1>
+        <p class="lead">The free setup stays intentionally light. A parent can get value without completing a giant household intake.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <form id="starterSetupForm" class="formgrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+        <label class="field">Learner name
+          <input type="text" name="learnerName" required placeholder="Learner name">
+        </label>
+        <label class="field">Grade
+          <select name="grade">
+            <option>Preschool</option>
+            <option selected>Kindergarten</option>
+            <option>1st Grade</option>
+            <option>2nd Grade</option>
+            <option>3rd Grade</option>
+            <option>4th Grade</option>
+            <option>5th Grade</option>
+          </select>
+        </label>
+        <label class="field">School days
+          <select name="schoolDays">
+            <option value="5" selected>5 days</option>
+            <option value="4">4 days</option>
+            <option value="3">3 days</option>
+          </select>
+        </label>
+        <label class="field">Daily learning time
+          <select name="dailyTime">
+            <option value="60">60 minutes</option>
+            <option value="90" selected>90 minutes</option>
+            <option value="120">2 hours</option>
+          </select>
+        </label>
+      </form>
+      <div class="actions">
+        <button type="submit" form="starterSetupForm" class="btn btn-primary">Save &amp; Continue to My Schedule &#8594;</button>
+        <a class="btn btn-secondary" href="my-school.html">Back to My School</a>
+      </div>
+      <div class="coming-soon-note">
+        <strong>What's next:</strong> After you save these basics, My Schedule will show your starter week structure. Full schedule generation is coming soon—your My School selections and setup will be ready when it arrives.
+      </div>
+    </section>
+
+    <div class="page-footer">
+      <a href="my-school.html">My School</a>
+      &nbsp;&middot;&nbsp;
+      <a href="index.html">Bloom Home</a>
+    </div>
+</div>
+<script src="scripts/bloom-resources-data.js"></script>
+<script src="scripts/bloom-school.js"></script>
+<script src="scripts/bloom-prep.js"></script>
+<script src="scripts/bloom-nav.js"></script>
+<script>
+  BloomNav.init({ module: "academy", page: "setup" });
+  BloomPrep.initStarterSetupForm();
+</script>
+</body>
+</html>

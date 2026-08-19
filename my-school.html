@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My School — Bloom Family Tech</title>
+  <meta name="description" content="Everything you've chosen for your homeschool, organized in one place—including the materials you need to teach it.">
+  <link rel="stylesheet" href="assets/family-tech-v4.css">
+</head>
+<body>
+<div id="bloom-eco-nav"></div>
+<div class="page-wrap">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">MY SCHOOL</div>
+        <h1>Your homeschool shelf</h1>
+        <p class="lead">Everything you've chosen for your homeschool, organized in one place—including the materials you need to teach it.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="sectionhead">
+        <div>
+          <div class="eyebrow">CURRICULUM YOU'VE CHOSEN</div>
+          <h2>Organized by learner and placement</h2>
+          <p class="lead">Bloom shows not just the resource, but the pieces the parent needs to teach it.</p>
+        </div>
+        <span class="pill" id="schoolCount"></span>
+      </div>
+      <div class="schoolgrid">
+        <div id="schoolMain"></div>
+        <div id="schoolSide"></div>
+      </div>
+    </section>
+
+    <div class="page-footer">
+      <a href="resource-vault.html">Add More Resources</a>
+      &nbsp;&middot;&nbsp;
+      <a href="print-prep.html">Print + Prep</a>
+      &nbsp;&middot;&nbsp;
+      <a href="index.html">Bloom Home</a>
+    </div>
+</div>
+<script src="scripts/bloom-resources-data.js"></script>
+<script src="scripts/bloom-school.js"></script>
+<script src="scripts/bloom-prep.js"></script>
+<script src="scripts/bloom-nav.js"></script>
+<script>
+  BloomNav.init({ module: "academy", page: "myschool" });
+  BloomPrep.renderMySchoolPage();
+  var count = BloomSchool.getSelections().length;
+  var pill = document.getElementById("schoolCount");
+  if (pill) pill.textContent = count + " resource" + (count === 1 ? "" : "s");
+</script>
+</body>
+</html>

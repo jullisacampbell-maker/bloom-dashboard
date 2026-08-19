@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Print + Prep — Bloom Family Tech</title>
+  <meta name="description" content="Know what to print, gather, and review before the week starts.">
+  <link rel="stylesheet" href="assets/family-tech-v4.css">
+</head>
+<body>
+<div id="bloom-eco-nav"></div>
+<div class="page-wrap">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">PRINT + PREP</div>
+        <h1>Know what to print, gather, and review before the week starts.</h1>
+        <p class="lead">This is where the parent guide becomes operational—not another file hiding in a download folder.</p>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-secondary" onclick="window.print()">Print this list</button>
+      </div>
+    </div>
+
+    <section class="section">
+      <div id="prepContainer"></div>
+    </section>
+
+    <div class="page-footer">
+      <a href="my-school.html">My School</a>
+      &nbsp;&middot;&nbsp;
+      <a href="resource-vault.html">Free Resource Vault</a>
+      &nbsp;&middot;&nbsp;
+      <a href="index.html">Bloom Home</a>
+    </div>
+</div>
+<script src="scripts/bloom-resources-data.js"></script>
+<script src="scripts/bloom-school.js"></script>
+<script src="scripts/bloom-prep.js"></script>
+<script src="scripts/bloom-nav.js"></script>
+<script>
+  BloomNav.init({ module: "academy", page: "prep" });
+  BloomPrep.renderPrepPage();
+</script>
+</body>
+</html>

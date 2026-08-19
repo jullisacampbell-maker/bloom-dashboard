@@ -1,0 +1,1154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bloom Family Tech — Founder Demo Prototype</title>
+<style>
+:root{--navy:#102c43;--navy2:#173f58;--green:#3f765c;--green2:#e9f2ec;--cream:#f7f2e8;--paper:#fffdfa;--ink:#183247;--muted:#65777d;--line:#dfe6e1;--gold:#d8ad59;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f4f3ee;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit}.shell{display:grid;grid-template-columns:238px 1fr;min-height:100vh}aside{background:var(--navy);color:#eef5f1;padding:26px 20px;position:sticky;top:0;height:100vh}
+.brand{font-family:Georgia,serif;font-size:24px;font-weight:700}.sub{font-size:11px;color:#aac0cd;margin:5px 0 25px}nav{display:grid;gap:6px}nav a{text-decoration:none;padding:10px 11px;border-radius:10px;font-size:13px;font-weight:700;color:#d7e3e9}nav a:hover{background:#173f58;color:#fff}
+.rule{position:absolute;bottom:22px;left:20px;right:20px;border-top:1px solid #31566c;padding-top:15px;color:#c8d7df;font-size:11px;line-height:1.55}.rule b{color:#fff;font-size:10px;letter-spacing:.12em}
+main{max-width:1240px;width:100%;padding:28px 34px 70px;margin:0 auto}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.kicker,.eyebrow{font-size:10px;font-weight:900;letter-spacing:.14em;color:var(--green);text-transform:uppercase}h1,h2,h3{font-family:Georgia,serif;color:#183247;margin-top:0}h1{font-size:46px;line-height:1.03;max-width:780px;margin:8px 0 10px}h2{font-size:31px;margin-bottom:8px}h3{font-size:20px;margin-bottom:7px}.lead{font-size:15px;line-height:1.6;color:var(--muted);max-width:780px}
+.btn,.linkbtn,.addlabel{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:11px;border:1px solid var(--line);padding:10px 14px;font-size:12px;font-weight:850;cursor:pointer}.btn-primary{background:var(--green);border-color:var(--green);color:white}.btn-secondary{background:#fff;color:var(--navy)}.btn-navy{background:var(--navy);border-color:var(--navy);color:white}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.hero{background:linear-gradient(135deg,#fffdfa 0%,#f6f0e5 62%,#ecf3ed 100%);border:1px solid #e2e3dc;border-radius:24px;padding:28px;margin-top:20px}.hero h2{font-size:35px;max-width:760px}.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 6px}.trustitem{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;display:flex;gap:10px}.trusticon{width:35px;height:35px;border-radius:10px;background:var(--green2);display:grid;place-items:center;flex:0 0 auto}.trustitem b{display:block;font-size:13px}.trustitem span{display:block;font-size:11px;line-height:1.4;color:var(--muted);margin-top:3px}
+.freeflow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 0}.flowstep{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.flowstep .num{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff;font-size:12px;font-weight:900;margin-bottom:8px}.flowstep b{font-size:12px}.flowstep span{display:block;font-size:10px;color:var(--muted);line-height:1.4;margin-top:4px}
+.section{margin-top:26px;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px}.sectionhead{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:15px}
+.featured-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.resource-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:15px;display:flex;flex-direction:column;min-height:410px}.resource-card--compact{min-height:390px}.resource-meta{display:flex;gap:6px;justify-content:space-between;align-items:flex-start}.badge{font-size:9px;font-weight:850;background:#eff2f2;color:#54666f;border-radius:999px;padding:5px 7px}.badge-green{background:var(--green2);color:#315e47}.provider{font-size:11px;color:#7a898f;margin-bottom:8px}.resource-card p{font-size:12px;line-height:1.48;color:#5d6d74}.bestfor{font-size:11px;line-height:1.45;background:#faf7ef;padding:9px;border-radius:10px;margin:5px 0 8px}.resource-tags{font-size:10px;color:#79878c;margin-bottom:8px}details{border-top:1px solid #edf0ed;padding-top:9px;margin-top:5px}summary{cursor:pointer;font-weight:850;font-size:11px;color:#24465d}.component-list{font-size:11px;line-height:1.6;color:#5a6970;padding-left:17px}.addcheck{position:absolute;opacity:0;pointer-events:none}.addlabel{margin-top:auto;background:#eef5ef;border-color:#c9dbcd;color:#315e47}.add-on{display:none}.addcheck:checked + .addlabel{background:var(--green);color:white;border-color:var(--green)}.addcheck:checked + .addlabel .add-off{display:none}.addcheck:checked + .addlabel .add-on{display:inline}.linkbtn{margin-top:8px;background:#fff;color:var(--navy)}
+.catalogdetails{margin-top:18px;border:0;padding:0}.catalogdetails>summary{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#f8faf8;display:inline-block}.filter-radio{position:absolute;opacity:0;pointer-events:none}.filterbar{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}.filterbar label{border:1px solid var(--line);border-radius:999px;background:#fff;padding:8px 11px;font-size:10px;font-weight:800;cursor:pointer}.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#filter-reading:checked ~ .catalog-grid .resource-card{display:none}
+#filter-reading:checked ~ .catalog-grid .resource-card[data-cat="Reading + Language Arts"]{display:flex}
+#filter-reading:checked ~ .filterbar label[for="filter-reading"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+#filter-math:checked ~ .catalog-grid .resource-card{display:none}
+#filter-math:checked ~ .catalog-grid .resource-card[data-cat="Math + Money"]{display:flex}
+#filter-math:checked ~ .filterbar label[for="filter-math"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+#filter-science:checked ~ .catalog-grid .resource-card{display:none}
+#filter-science:checked ~ .catalog-grid .resource-card[data-cat="Science + Health"]{display:flex}
+#filter-science:checked ~ .filterbar label[for="filter-science"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+#filter-social:checked ~ .catalog-grid .resource-card{display:none}
+#filter-social:checked ~ .catalog-grid .resource-card[data-cat="Social Studies"]{display:flex}
+#filter-social:checked ~ .filterbar label[for="filter-social"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+#filter-art:checked ~ .catalog-grid .resource-card{display:none}
+#filter-art:checked ~ .catalog-grid .resource-card[data-cat="Art + Music"]{display:flex}
+#filter-art:checked ~ .filterbar label[for="filter-art"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+#filter-tech:checked ~ .catalog-grid .resource-card{display:none}
+#filter-tech:checked ~ .catalog-grid .resource-card[data-cat="Technology"]{display:flex}
+#filter-tech:checked ~ .filterbar label[for="filter-tech"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+#filter-multi:checked ~ .catalog-grid .resource-card{display:none}
+#filter-multi:checked ~ .catalog-grid .resource-card[data-cat="Multi-Subject"]{display:flex}
+#filter-multi:checked ~ .filterbar label[for="filter-multi"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+#filter-parent:checked ~ .catalog-grid .resource-card{display:none}
+#filter-parent:checked ~ .catalog-grid .resource-card[data-cat="Parent Tools"]{display:flex}
+#filter-parent:checked ~ .filterbar label[for="filter-parent"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+#filter-all:checked ~ .filterbar label[for="filter-all"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.schoolgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.learnercard{background:#f8faf8;border:1px solid var(--line);border-radius:17px;padding:17px}.learnerhead{display:flex;justify-content:space-between;gap:10px}.pill{font-size:10px;border-radius:999px;padding:5px 8px;background:#edf3ef;color:#40634f;font-weight:800}.curriculumrow{display:grid;grid-template-columns:1.3fr 1fr auto;gap:10px;align-items:center;border-top:1px solid #e3e9e4;padding:11px 0}.curriculumrow:first-of-type{border-top:0}.curriculumrow b{font-size:12px}.curriculumrow span{font-size:10px;color:var(--muted)}.componentchips{display:flex;gap:5px;flex-wrap:wrap}.componentchips i{font-style:normal;font-size:9px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 6px}.prepmini{background:var(--navy);color:#fff;border-radius:17px;padding:17px}.prepmini h3{color:#fff}.prepmini p,.prepmini li{font-size:11px;line-height:1.5;color:#cfdae1}.prepmini ul{padding-left:17px}
+.formgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}label.field{display:grid;gap:5px;font-size:10px;font-weight:800;color:#4a5e68}.field input,.field select{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff;color:#314b59}
+.schedulegrid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.day{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px}.day b{font-family:Georgia,serif;font-size:17px}.block{margin-top:9px;border-left:3px solid var(--green);padding-left:8px}.block strong{display:block;font-size:10px}.block span{display:block;font-size:9px;color:var(--muted);margin-top:2px}.block.independent{border-left-color:#7893a5}.block.family{border-left-color:var(--gold)}
+.notice{margin-top:16px;background:#fff9ed;border:1px solid #e6d3a8;border-radius:17px;padding:17px;display:grid;grid-template-columns:44px 1fr auto;gap:13px;align-items:center}.noticeicon{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#f3e2bd;font-size:21px}.notice p{font-size:11px;line-height:1.5;color:#69777a;margin:0}
+.paidpreview{background:var(--navy);color:#fff}.paidpreview h2,.paidpreview h3{color:#fff}.paidpreview .lead{color:#cad7de}.featuregrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.feature{background:#173f58;border:1px solid #31586f;border-radius:14px;padding:13px}.feature b{font-size:12px}.feature span{display:block;color:#cbd8df;font-size:10px;line-height:1.45;margin-top:4px}
+.forecast{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.forecastcard{background:#fff;color:var(--ink);border-radius:16px;padding:15px}.forecastcard h3{font-size:18px}.forecastcard p{font-size:11px;line-height:1.5;color:var(--muted)}.modulechips{display:flex;flex-wrap:wrap;gap:6px}.modulechips span{font-size:9px;border-radius:999px;background:#edf3ef;padding:5px 7px;color:#315e47;font-weight:800}
+.prepqueue{display:grid;grid-template-columns:1fr 1fr;gap:14px}.queuecard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px}.queuecard h3{font-size:18px}.checkline{display:flex;gap:8px;align-items:flex-start;border-top:1px solid #edf0ed;padding:9px 0;font-size:11px}.checkline:first-of-type{border-top:0}.box{width:16px;height:16px;border:1px solid #aebeb3;border-radius:4px;flex:0 0 auto}.where{font-size:9px;color:#77868b;margin-top:3px}
+.plangrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.plan{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px;display:flex;flex-direction:column;min-height:385px}.plan.featured{border:2px solid var(--navy);box-shadow:0 12px 28px rgba(16,44,67,.09)}.plantag{font-size:9px;font-weight:900;letter-spacing:.12em;color:var(--green)}.price{font-family:Georgia,serif;font-size:29px;margin:6px 0}.price small{font-family:Inter,sans-serif;font-size:11px;color:var(--muted)}.planwho{font-size:10px;line-height:1.45;background:#f5f7f5;padding:9px;border-radius:10px;color:#5a6a70}.plan ul{padding-left:16px;font-size:11px;line-height:1.7;color:#5a6a70}.plan .btn{margin-top:auto}.addon{margin-top:13px;background:#f8f4ea;border:1px solid #e5d9bd;border-radius:14px;padding:13px;font-size:11px;line-height:1.5}
+.closecta{background:linear-gradient(135deg,#102c43,#173f58);color:white;border-radius:22px;padding:24px;margin-top:26px;display:flex;justify-content:space-between;gap:16px;align-items:center}.closecta h2{color:white;margin-bottom:5px}.closecta p{color:#cfdae1;font-size:12px;line-height:1.5;max-width:720px}
+.demo-note{font-size:10px;color:#708086;margin-top:10px}
+@media(max-width:1050px){.featured-grid,.catalog-grid{grid-template-columns:1fr 1fr}.schedulegrid{grid-template-columns:repeat(3,1fr)}.plangrid,.featuregrid{grid-template-columns:1fr 1fr}}
+@media(max-width:800px){.shell{display:block}aside{position:relative;height:auto}aside nav{grid-template-columns:repeat(3,1fr)}.rule{position:static;margin-top:18px}main{padding:20px 15px 50px}h1{font-size:36px}.trust,.freeflow,.featured-grid,.catalog-grid,.schoolgrid,.formgrid,.schedulegrid,.featuregrid,.forecast,.prepqueue,.plangrid{grid-template-columns:1fr}.notice{grid-template-columns:44px 1fr}.notice .btn{grid-column:1/-1}.closecta{display:block}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside>
+  <div class="brand">Bloom Family Tech</div>
+  <div class="sub">Free Resource Vault</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#vault">Free Resource Vault</a>
+    <a href="#myschool">My School</a>
+    <a href="#setup">Starter Setup</a>
+    <a href="#schedule">My Schedule</a>
+    <a href="#prep">Print + Prep</a>
+    <a href="#plans">Plans</a>
+  </nav>
+  <div class="rule"><b>THE BLOOM RULE</b><br>Use what serves your family. Adapt what does not. Keep enough proof to tell the story.</div>
+</aside>
+
+<main id="home">
+  <div class="topbar">
+    <div>
+      <div class="kicker">CURATED FREE RESOURCE VAULT</div>
+      <h1>Great free curriculum—without twenty open tabs.</h1>
+      <p class="lead">Find the resources. Build the rhythm. Start school with less overwhelm.</p>
+    </div>
+    <div class="actions"><a class="btn btn-secondary" href="#plans">Plans</a></div>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow">START FREE WITH BLOOM</div>
+    <h2>Browse curated free homeschool resources, save what fits your child, and turn your choices into a simple starter schedule.</h2>
+    <p class="lead">No paywall on the resource links. No giant directory to decode. Bloom helps you move from “I found something” to “I know how I’m going to use it.”</p>
+    <div class="actions"><a class="btn btn-primary" href="#vault">Explore Free Resources →</a><a class="btn btn-secondary" href="#myschool">See How Bloom Works</a></div>
+    <div class="trust">
+      <div class="trustitem"><div class="trusticon">✓</div><div><b>Curated, not dumped</b><span>Strong starting points instead of hundreds of tabs to sort through.</span></div></div>
+      <div class="trustitem"><div class="trusticon">↗</div><div><b>Free means clear</b><span>Bloom shows what is truly free and where optional paid extras begin.</span></div></div>
+      <div class="trustitem"><div class="trusticon">✦</div><div><b>Built to become a plan</b><span>Add resources to My School and turn them into a usable weekly rhythm.</span></div></div>
+    </div>
+    <div class="freeflow">
+      <div class="flowstep"><div class="num">1</div><b>Find Resources</b><span>Browse by subject, grade, format, and parent effort.</span></div>
+      <div class="flowstep"><div class="num">2</div><b>Add to My School</b><span>Collect the curriculum that actually fits your learner.</span></div>
+      <div class="flowstep"><div class="num">3</div><b>Build My Week</b><span>Give Bloom a few basics and get a starter schedule.</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="vault">
+    <div class="sectionhead"><div><div class="eyebrow">STEP 1 • FIND WHAT SERVES YOUR FAMILY</div><h2>Free Resource Vault</h2><p class="lead">Bloom does not win by having the most links. It wins by making good resources easier to understand and easier to use.</p></div><span class="pill">36+ curated resources</span></div>
+    <div class="featured-grid">
+      
+    <article class="resource-card" data-cat="Social Studies">
+      <div class="resource-meta">
+        <span class="badge badge-green">Social Studies</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Pan-African Global Open Curriculum</h3>
+      <div class="provider">Whole Living Academy / ScholarVerse</div>
+      <p>African-centered 180-day open curriculum for shared family learning.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Family unit spine</div>
+      <div class="resource-tags">Social Studies • Culture • Identity Family • K + Preschool Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Parent Guidance</li><li>✓ Student Activities</li><li>✓ Discussion Prompts</li><li>✓ Project Ideas</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-1">
+      <label class="addlabel" for="add-1">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://panafricancurriculum.com/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+    <article class="resource-card" data-cat="Multi-Subject">
+      <div class="resource-meta">
+        <span class="badge badge-green">Multi-Subject</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Core Knowledge — Free Curriculum Hub</h3>
+      <div class="provider">Core Knowledge Foundation</div>
+      <p>A strong hub for free downloadable curriculum across multiple subjects.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Complete Curriculum Preschool–8 New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Parent/Teacher Guide</li><li>✓ Student Materials</li><li>✓ Activity Pages</li><li>✓ Readers / Read-Alouds</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-22">
+      <label class="addlabel" for="add-22">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.coreknowledge.org/download-free-curriculum/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+    <article class="resource-card" data-cat="Multi-Subject">
+      <div class="resource-meta">
+        <span class="badge badge-green">Multi-Subject</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Khan Academy Kids</h3>
+      <div class="provider">Khan Academy</div>
+      <p>Free early-learning app for literacy, math, logic, creativity, and SEL.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Supplemental digital practice</div>
+      <div class="resource-tags">Reading • Math • SEL Ages 2–8 Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-13">
+      <label class="addlabel" for="add-13">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://learn.khanacademy.org/khan-academy-kids/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+    <article class="resource-card" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>K–5 Classroom Lesson Plans</h3>
+      <div class="provider">U.S. Currency Education Program</div>
+      <p>Printable lessons for counting, matching, sorting, vocabulary, and decision-making.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Financial Literacy Friday lessons</div>
+      <div class="resource-tags">Financial Literacy • Math Family • K–5 adaptation Planned</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Teacher Lesson Plans</li><li>✓ Student Activities</li><li>✓ Answer / Discussion Support</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-17">
+      <label class="addlabel" for="add-17">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.uscurrency.gov/educational-materials/classrooms/lesson-plans" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+    <article class="resource-card" data-cat="Reading + Language Arts">
+      <div class="resource-meta">
+        <span class="badge badge-green">Reading + Language Arts</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Treasure Hunt Reading</h3>
+      <div class="provider">Prenda</div>
+      <p>Systematic, multisensory early-reading program with free materials.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Reading • Phonics Beginning Readers New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Parent Instructions</li><li>✓ Student Workbook</li><li>✓ Video Lessons</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-23">
+      <label class="addlabel" for="add-23">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.prenda.com/treasure-hunt-reading" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+    <article class="resource-card" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>ChooseFI PreK–12 Financial Literacy</h3>
+      <div class="provider">ChooseFI Foundation</div>
+      <p>Free grade-spanning financial literacy that complements Bloom life skills.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Financial Literacy • Life Skills PreK–12 New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-28">
+      <label class="addlabel" for="add-28">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.choosefifoundation.org/prek12" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+    </div>
+
+    <details class="catalogdetails">
+      <summary>Browse all 36 curated resources →</summary>
+      <input class="filter-radio" type="radio" name="vaultfilter" id="filter-all" checked>
+<input class="filter-radio" type="radio" name="vaultfilter" id="filter-reading" >
+<input class="filter-radio" type="radio" name="vaultfilter" id="filter-math" >
+<input class="filter-radio" type="radio" name="vaultfilter" id="filter-science" >
+<input class="filter-radio" type="radio" name="vaultfilter" id="filter-social" >
+<input class="filter-radio" type="radio" name="vaultfilter" id="filter-art" >
+<input class="filter-radio" type="radio" name="vaultfilter" id="filter-tech" >
+<input class="filter-radio" type="radio" name="vaultfilter" id="filter-multi" >
+<input class="filter-radio" type="radio" name="vaultfilter" id="filter-parent" >
+      <div class="filterbar"><label for="filter-all">All</label>
+<label for="filter-reading">Reading + Language Arts</label>
+<label for="filter-math">Math + Money</label>
+<label for="filter-science">Science + Health</label>
+<label for="filter-social">Social Studies</label>
+<label for="filter-art">Art + Music</label>
+<label for="filter-tech">Technology</label>
+<label for="filter-multi">All-in-One</label>
+<label for="filter-parent">Parent Tools</label></div>
+      <div class="catalog-grid">
+    <article class="resource-card resource-card--compact" data-cat="Social Studies">
+      <div class="resource-meta">
+        <span class="badge badge-green">Social Studies</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Pan-African Global Open Curriculum</h3>
+      <div class="provider">Whole Living Academy / ScholarVerse</div>
+      <p>African-centered 180-day open curriculum for shared family learning.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Family unit spine</div>
+      <div class="resource-tags">Social Studies • Culture • Identity Family • K + Preschool Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Parent Guidance</li><li>✓ Student Activities</li><li>✓ Discussion Prompts</li><li>✓ Project Ideas</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-1">
+      <label class="addlabel" for="add-1">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://panafricancurriculum.com/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Social Studies">
+      <div class="resource-meta">
+        <span class="badge badge-green">Social Studies</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Little Zola&#x27;s Big Idea: Making Our Park Shine</h3>
+      <div class="provider">Pan-African Global Open Curriculum</div>
+      <p>Community-leaders add-on connecting stewardship, citizenship, and language arts.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Read-aloud / Project</div>
+      <div class="resource-tags">Social Studies • Citizenship Family Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-2">
+      <label class="addlabel" for="add-2">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://panafricancurriculum.com/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Reading + Language Arts">
+      <div class="resource-meta">
+        <span class="badge badge-green">Reading + Language Arts</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Letter of the Week Preschool Curriculum</h3>
+      <div class="provider">Freedom Homeschooling</div>
+      <p>35-week preschool sequence with alphabet, phonemic awareness, pre-writing, and early math.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Preschool skills spine</div>
+      <div class="resource-tags">Early Literacy • Fine Motor Preschool Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Parent Directions</li><li>✓ Student Pages</li><li>✓ Read-Aloud Ideas</li><li>✓ Activities</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-3">
+      <label class="addlabel" for="add-3">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://freedomhomeschooling.com/week-1-free-alphabet-activities/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Parent Tools">
+      <div class="resource-meta">
+        <span class="badge badge-green">Parent Tools</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Homeschool Kindergarten Daily Schedule</h3>
+      <div class="provider">Homeschool Workplans</div>
+      <p>A 180-day / 36-week workplan coordinating CKLA Skills, CKLA Knowledge, and MEP.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Master pacing guide</div>
+      <div class="resource-tags">Planning • Core Subjects Kindergarten Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-4">
+      <label class="addlabel" for="add-4">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.homeschoolworkplans.com/homeschool-kindergarten-daily-schedule/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Parent Tools">
+      <div class="resource-meta">
+        <span class="badge badge-green">Parent Tools</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>CKLA Kindergarten Skills Organization &amp; Preparation Guide</h3>
+      <div class="provider">Homeschool Workplans</div>
+      <p>Helps parents organize and print CKLA Skills efficiently.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Teacher prep reference</div>
+      <div class="resource-tags">Reading • Teacher Prep Parent + Kindergarten Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-5">
+      <label class="addlabel" for="add-5">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.homeschoolworkplans.com/homeschool-kindergarten-core-knowledge-skills-organization-preparation-guide/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Parent Tools">
+      <div class="resource-meta">
+        <span class="badge badge-green">Parent Tools</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>CKLA Kindergarten Knowledge Organization &amp; Preparation Guide</h3>
+      <div class="provider">Homeschool Workplans</div>
+      <p>Organizes CKLA Knowledge / Listening &amp; Learning domains and read-alouds.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Teacher prep reference</div>
+      <div class="resource-tags">Language Arts • Teacher Prep Parent + Family Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-6">
+      <label class="addlabel" for="add-6">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.homeschoolworkplans.com/homeschool-kindergarten-core-knowledge-language-arts-organization-preparation-guide/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Reading + Language Arts">
+      <div class="resource-meta">
+        <span class="badge badge-green">Reading + Language Arts</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>CKLA Kindergarten Skills — Unit 1</h3>
+      <div class="provider">Core Knowledge Foundation</div>
+      <p>Systematic phonics, phonemic awareness, handwriting, and decoding.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Systematic literacy foundation</div>
+      <div class="resource-tags">Reading • Phonics Kindergarten Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Teacher Guide</li><li>✓ Student Workbook</li><li>✓ Activity Pages</li><li>✓ Reader</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-7">
+      <label class="addlabel" for="add-7">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.coreknowledge.org/free-resource/ckla-unit-01-kindergarten-skills/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Reading + Language Arts">
+      <div class="resource-meta">
+        <span class="badge badge-green">Reading + Language Arts</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>CKLA Kindergarten Knowledge — Domain 1</h3>
+      <div class="provider">Core Knowledge Foundation</div>
+      <p>Nursery rhymes and fables with vocabulary, comprehension, and cultural literacy.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Knowledge-rich read-aloud</div>
+      <div class="resource-tags">Language Arts • Read-Aloud Family • K + Preschool Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Teacher Guide</li><li>✓ Read-Alouds</li><li>✓ Activity Pages</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-8">
+      <label class="addlabel" for="add-8">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.coreknowledge.org/free-resource/ckla-domain-01-nursery-rhymes-fables/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>MEP Primary Mathematics — Year 1</h3>
+      <div class="provider">Centre for Innovation in Mathematics Teaching</div>
+      <p>Free primary mathematics with number sense, counting, patterns, and problem solving.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Systematic math foundation</div>
+      <div class="resource-tags">Math Kindergarten / Year 1 Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Teacher Lesson Plans</li><li>✓ Practice Pages</li><li>✓ Math Activities</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-9">
+      <label class="addlabel" for="add-9">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.cimt.org.uk/projects/mepres/primary/index.htm" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Art + Music">
+      <div class="resource-meta">
+        <span class="badge badge-green">Art + Music</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Music Educators Toolbox: Grades K–2</h3>
+      <div class="provider">Carnegie Hall</div>
+      <p>Music listening, rhythm, singing, movement, and musical concepts.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Shared music curriculum</div>
+      <div class="resource-tags">Music Family • K + Preschool Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-10">
+      <label class="addlabel" for="add-10">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.carnegiehall.org/Education/Programs/Music-Educators-Toolbox/Grades-K-2" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Art + Music">
+      <div class="resource-meta">
+        <span class="badge badge-green">Art + Music</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Hoffman Academy Piano Lessons</h3>
+      <div class="provider">Hoffman Academy</div>
+      <p>Guided beginner piano lessons; free lesson access with optional paid features.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Piano instruction</div>
+      <div class="resource-tags">Music • Piano Family • Beginner Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-11">
+      <label class="addlabel" for="add-11">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://app.hoffmanacademy.com/lessons/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Technology">
+      <div class="resource-meta">
+        <span class="badge badge-green">Technology</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>TypingClub — Jungle Junior</h3>
+      <div class="provider">edclub / TypingClub</div>
+      <p>Keyboard readiness focused on posture, letter-key awareness, and comfort.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Computer-time practice</div>
+      <div class="resource-tags">Technology • Typing Pre-K + Kindergarten Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-12">
+      <label class="addlabel" for="add-12">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.typingclub.com/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Multi-Subject">
+      <div class="resource-meta">
+        <span class="badge badge-green">Multi-Subject</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Khan Academy Kids</h3>
+      <div class="provider">Khan Academy</div>
+      <p>Free early-learning app for literacy, math, logic, creativity, and SEL.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Supplemental digital practice</div>
+      <div class="resource-tags">Reading • Math • SEL Ages 2–8 Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-13">
+      <label class="addlabel" for="add-13">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://learn.khanacademy.org/khan-academy-kids/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Reading + Language Arts">
+      <div class="resource-meta">
+        <span class="badge badge-green">Reading + Language Arts</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Duolingo ABC</h3>
+      <div class="provider">Duolingo</div>
+      <p>Phonics, letter sounds, decoding, handwriting readiness, and comprehension.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Supplemental literacy practice</div>
+      <div class="resource-tags">Reading • Phonics Beginning Readers Active</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-14">
+      <label class="addlabel" for="add-14">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://abc.duolingo.com/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>U.S. Currency Education Program — Download Materials</h3>
+      <div class="provider">U.S. Currency Education Program</div>
+      <p>Official U.S. government lessons, activities, printables, money, and games.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Financial Literacy Friday hub</div>
+      <div class="resource-tags">Financial Literacy • Math Family • K–5 adaptation Planned</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-15">
+      <label class="addlabel" for="add-15">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.uscurrency.gov/educational-materials/download-materials" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Currency Academy</h3>
+      <div class="provider">U.S. Currency Education Program</div>
+      <p>Interactive exploration of currency recognition, features, and observation.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Financial literacy enrichment</div>
+      <div class="resource-tags">Financial Literacy Family • K–5 adaptation Planned</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-16">
+      <label class="addlabel" for="add-16">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.uscurrency.gov/educational-materials/classrooms/currency-academy" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>K–5 Classroom Lesson Plans</h3>
+      <div class="provider">U.S. Currency Education Program</div>
+      <p>Printable lessons for counting, matching, sorting, vocabulary, and decision-making.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Financial Literacy Friday lessons</div>
+      <div class="resource-tags">Financial Literacy • Math Family • K–5 adaptation Planned</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Teacher Lesson Plans</li><li>✓ Student Activities</li><li>✓ Answer / Discussion Support</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-17">
+      <label class="addlabel" for="add-17">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.uscurrency.gov/educational-materials/classrooms/lesson-plans" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Carnival Thrills and Dollar Bills</h3>
+      <div class="provider">U.S. Currency Education Program</div>
+      <p>Story/activity book for money math, reading, decisions, and financial vocabulary.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Financial literacy read-aloud</div>
+      <div class="resource-tags">Financial Literacy • Reading Early Elementary adaptation Planned</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-18">
+      <label class="addlabel" for="add-18">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.uscurrency.gov/educational-materials/classrooms/carnival-thrills-and-dollar-bills" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Printable Play Money</h3>
+      <div class="provider">U.S. Currency Education Program</div>
+      <p>Printable manipulative for stores, restaurants, piggy banks, sorting, and matching.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Hands-on math material</div>
+      <div class="resource-tags">Financial Literacy • Math Preschool + Kindergarten Planned</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-19">
+      <label class="addlabel" for="add-19">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.uscurrency.gov/sites/default/files/downloadable-materials/files/en/CEP-Printable-Play-Money-English.pdf" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Play Money Coloring Sheets</h3>
+      <div class="provider">U.S. Currency Education Program</div>
+      <p>Low-writing entry point for currency recognition, observation, and fine motor practice.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Art + financial literacy</div>
+      <div class="resource-tags">Financial Literacy • Fine Motor Preschool + Kindergarten Planned</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-20">
+      <label class="addlabel" for="add-20">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.uscurrency.gov/sites/default/files/downloadable-materials/files/en/CEP-%20Play%20Money%20Coloring%20Sheet%20-%20English.pdf" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">Already in Bloom</span>
+      </div>
+      <h3>Money Adventure Mobile App</h3>
+      <div class="provider">U.S. Currency Education Program</div>
+      <p>Optional review app for currency, observation, and problem solving after hands-on work.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Optional digital financial literacy</div>
+      <div class="resource-tags">Financial Literacy • Digital Early Elementary adaptation Planned</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-21">
+      <label class="addlabel" for="add-21">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.uscurrency.gov/educational-materials/classrooms/money-adventure-mobile-app" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Multi-Subject">
+      <div class="resource-meta">
+        <span class="badge badge-green">Multi-Subject</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Core Knowledge — Free Curriculum Hub</h3>
+      <div class="provider">Core Knowledge Foundation</div>
+      <p>A strong hub for free downloadable curriculum across multiple subjects.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Complete Curriculum Preschool–8 New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Parent/Teacher Guide</li><li>✓ Student Materials</li><li>✓ Activity Pages</li><li>✓ Readers / Read-Alouds</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-22">
+      <label class="addlabel" for="add-22">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.coreknowledge.org/download-free-curriculum/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Reading + Language Arts">
+      <div class="resource-meta">
+        <span class="badge badge-green">Reading + Language Arts</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Treasure Hunt Reading</h3>
+      <div class="provider">Prenda</div>
+      <p>Systematic, multisensory early-reading program with free materials.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Reading • Phonics Beginning Readers New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Parent Instructions</li><li>✓ Student Workbook</li><li>✓ Video Lessons</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-23">
+      <label class="addlabel" for="add-23">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.prenda.com/treasure-hunt-reading" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Multi-Subject">
+      <div class="resource-meta">
+        <span class="badge badge-green">Multi-Subject</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Khan Academy</h3>
+      <div class="provider">Khan Academy</div>
+      <p>Long-term free learning platform that families can keep using as children grow.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Math • Science • More K–12+ New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-24">
+      <label class="addlabel" for="add-24">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.khanacademy.org/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>The Good &amp; the Beautiful — Math</h3>
+      <div class="provider">The Good &amp; the Beautiful</div>
+      <p>Free downloadable math course books; clearly labeled faith-based.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Math K–7 New Faith-Based</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Course Book</li><li>✓ Student Practice</li><li>✓ Optional Extras</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-25">
+      <label class="addlabel" for="add-25">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.goodandbeautiful.com/pages/free-homeschool-math-curriculum" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Reading + Language Arts">
+      <div class="resource-meta">
+        <span class="badge badge-green">Reading + Language Arts</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>The Good &amp; the Beautiful — Language Arts</h3>
+      <div class="provider">The Good &amp; the Beautiful</div>
+      <p>Free downloadable language arts combining reading, grammar, writing, and spelling.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Language Arts K–8 New Faith-Based</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Course Book</li><li>✓ Student Practice</li><li>✓ Reading / Writing Activities</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-26">
+      <label class="addlabel" for="add-26">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.goodandbeautiful.com/pages/free-homeschool-language-arts-curriculum" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Science + Health">
+      <div class="resource-meta">
+        <span class="badge badge-green">Science + Health</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Mr. Q Classic Science</h3>
+      <div class="provider">Mr. Q / E=mcQ</div>
+      <p>Free classic life-science materials with textbook-style lessons and activities.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Science Elementary New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Parent Guide</li><li>✓ Student Text</li><li>✓ Worksheets</li><li>✓ Tests / Activities</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-27">
+      <label class="addlabel" for="add-27">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://eequalsmcq.com/classicsciinfo.htm" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Math + Money">
+      <div class="resource-meta">
+        <span class="badge badge-green">Math + Money</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>ChooseFI PreK–12 Financial Literacy</h3>
+      <div class="provider">ChooseFI Foundation</div>
+      <p>Free grade-spanning financial literacy that complements Bloom life skills.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Financial Literacy • Life Skills PreK–12 New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-28">
+      <label class="addlabel" for="add-28">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.choosefifoundation.org/prek12" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Science + Health">
+      <div class="resource-meta">
+        <span class="badge badge-green">Science + Health</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Health Powered Kids</h3>
+      <div class="provider">Allina Health</div>
+      <p>Free lessons in nutrition, exercise, hygiene, mindfulness, and healthy habits.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Health • Wellness Ages 3–14 New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-29">
+      <label class="addlabel" for="add-29">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://healthpoweredkids.org/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Technology">
+      <div class="resource-meta">
+        <span class="badge badge-green">Technology</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Code.org</h3>
+      <div class="provider">Code.org</div>
+      <p>Free computer science, coding, AI, and data-science learning.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Technology • Coding • AI K–12 New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-30">
+      <label class="addlabel" for="add-30">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://code.org/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Technology">
+      <div class="resource-meta">
+        <span class="badge badge-green">Technology</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>CS Unplugged</h3>
+      <div class="provider">University of Canterbury</div>
+      <p>Computer-science thinking through games and activities without needing a computer.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Bloom Pick</div>
+      <div class="resource-tags">Technology • Offline K–8 New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-31">
+      <label class="addlabel" for="add-31">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.csunplugged.org/en/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Art + Music">
+      <div class="resource-meta">
+        <span class="badge badge-green">Art + Music</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Chrome Music Lab</h3>
+      <div class="provider">Google</div>
+      <p>Playful experiments with rhythm, melody, sound, and composition.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Great Alternative</div>
+      <div class="resource-tags">Music • Digital PreK–12 New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-32">
+      <label class="addlabel" for="add-32">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://musiclab.chromeexperiments.com/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Art + Music">
+      <div class="resource-meta">
+        <span class="badge badge-green">Art + Music</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Core Knowledge — Art &amp; Music</h3>
+      <div class="provider">Core Knowledge Foundation</div>
+      <p>Downloadable instructional units and teacher materials for art and music.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Great Alternative</div>
+      <div class="resource-tags">Art • Music K–8 New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-33">
+      <label class="addlabel" for="add-33">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://www.coreknowledge.org/curriculum/arts-music/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Art + Music">
+      <div class="resource-meta">
+        <span class="badge badge-green">Art + Music</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Art for Kids Hub</h3>
+      <div class="provider">Art for Kids Hub</div>
+      <p>Approachable drawing, painting, origami, sculpting, and craft instruction.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Great Alternative</div>
+      <div class="resource-tags">Art Elementary New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-34">
+      <label class="addlabel" for="add-34">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://artforkidshub.com/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Multi-Subject">
+      <div class="resource-meta">
+        <span class="badge badge-green">Multi-Subject</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Under the Home</h3>
+      <div class="provider">Under the Home</div>
+      <p>Broad literature-rich elementary curriculum built heavily around public-domain materials.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Great Alternative</div>
+      <div class="resource-tags">Complete Curriculum Elementary New</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-35">
+      <label class="addlabel" for="add-35">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://underthehome.org/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article>
+
+    <article class="resource-card resource-card--compact" data-cat="Multi-Subject">
+      <div class="resource-meta">
+        <span class="badge badge-green">Multi-Subject</span>
+        <span class="badge">New Curated Find</span>
+      </div>
+      <h3>Easy Peasy All-in-One Homeschool</h3>
+      <div class="provider">Easy Peasy</div>
+      <p>Very comprehensive free Christian homeschool program with day-by-day structure.</p>
+      <div class="bestfor"><b>Best for:</b> Bloom role: Great Alternative</div>
+      <div class="resource-tags">Complete Curriculum K–12 New Faith-Based</div>
+      <details>
+        <summary>What comes with it</summary>
+        <ul class="component-list"><li>✓ Resource / Lesson Access</li><li>✓ Usage Notes</li></ul>
+      </details>
+      <input class="addcheck" type="checkbox" id="add-36">
+      <label class="addlabel" for="add-36">
+        <span class="add-off">＋ Add to My School</span>
+        <span class="add-on">✓ Added to My School</span>
+      </label>
+      <a class="linkbtn" href="https://allinonehomeschool.com/" target="_blank" rel="noopener">Visit Resource ↗</a>
+    </article></div>
+    </details>
+  </section>
+
+  <section class="section" id="myschool">
+    <div class="sectionhead"><div><div class="eyebrow">STEP 2 • ADD TO MY SCHOOL</div><h2>My School</h2><p class="lead">This is where a saved link becomes an actual curriculum plan. Bloom shows not just the resource, but the pieces the parent needs to teach it.</p></div><span class="pill">Sample learner • Kindergarten</span></div>
+    <div class="schoolgrid">
+      <div class="learnercard">
+        <div class="learnerhead"><div><h3>Avery’s Kindergarten</h3><div class="provider">Sample founder-demo school shelf</div></div><span class="pill">4 resources</span></div>
+        <div class="curriculumrow"><div><b>CKLA Kindergarten Skills — Unit 1</b><span>Reading + Language Arts • Teacher Time</span></div><div class="componentchips"><i>Teacher Guide</i><i>Student Workbook</i><i>Reader</i></div><a class="btn btn-secondary" href="#prep">Prep</a></div>
+        <div class="curriculumrow"><div><b>Khan Academy Kids</b><span>Math + Reading • Independent</span></div><div class="componentchips"><i>Digital</i><i>No printing</i></div><a class="btn btn-secondary" href="#schedule">Schedule</a></div>
+        <div class="curriculumrow"><div><b>Pan-African Global Open Curriculum</b><span>Social Studies • Family Learning</span></div><div class="componentchips"><i>Parent Guidance</i><i>Activities</i><i>Projects</i></div><a class="btn btn-secondary" href="#prep">Prep</a></div>
+        <div class="curriculumrow"><div><b>K–5 Classroom Lesson Plans</b><span>Financial Literacy • 1× weekly</span></div><div class="componentchips"><i>Lesson Plans</i><i>Student Activities</i></div><a class="btn btn-secondary" href="#prep">Prep</a></div>
+        <div class="actions"><a class="btn btn-primary" href="#setup">Build My Week →</a><a class="btn btn-secondary" href="#vault">Add More Resources</a></div>
+      </div>
+      <div class="prepmini">
+        <div class="eyebrow" style="color:#acd0b6">CURRICULUM COMPONENTS</div>
+        <h3>Bloom knows the parent has materials too.</h3>
+        <p>When a curriculum includes teaching support, Bloom treats it as part of the school—not as a hidden download the parent has to remember later.</p>
+        <ul><li>Parent / teacher guide</li><li>Student pages or workbooks</li><li>Answer keys</li><li>Readers and read-alouds</li><li>Supplies and prep notes</li></ul>
+        <a class="btn" style="background:white;color:var(--navy)" href="#prep">See Print + Prep →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="setup">
+    <div class="eyebrow">STEP 3 • STARTER SETUP</div><h2>Tell Bloom just enough to build a useful first week.</h2>
+    <p class="lead">The free setup stays intentionally light. A parent can get value without completing a giant household intake.</p>
+    <div class="formgrid">
+      <label class="field">Learner name<input value="Avery"></label>
+      <label class="field">Grade<select><option>Kindergarten</option><option>Preschool</option><option>1st Grade</option><option>2nd Grade</option></select></label>
+      <label class="field">School days<select><option>5 days</option><option>4 days</option><option>3 days</option></select></label>
+      <label class="field">Daily learning time<select><option>90 minutes</option><option>60 minutes</option><option>2 hours</option></select></label>
+    </div>
+    <div class="actions"><a class="btn btn-primary" href="#schedule">Generate My Free Starter Schedule →</a></div>
+    <div class="demo-note">In the live product, Bloom also uses each selected resource’s requested frequency and placement: Teacher Time, Independent, Family Learning, or Bloom Basket.</div>
+  </section>
+
+  <section class="section" id="schedule">
+    <div class="eyebrow">YOUR FIRST BLOOM WIN</div><h2>Avery’s Starter Week</h2>
+    <p class="lead">The free version turns chosen resources into a clear starting rhythm. It gives the family something useful before asking them to buy anything.</p>
+    <div class="schedulegrid">
+      <div class="day"><b>Monday</b><div class="block"><strong>CKLA Skills</strong><span>20 min • Teacher Time</span></div><div class="block independent"><strong>Khan Academy Kids</strong><span>15 min • Independent</span></div><div class="block family"><strong>Pan-African Curriculum</strong><span>25 min • Family Learning</span></div></div>
+      <div class="day"><b>Tuesday</b><div class="block"><strong>CKLA Skills</strong><span>20 min • Teacher Time</span></div><div class="block independent"><strong>Khan Academy Kids</strong><span>15 min • Independent</span></div><div class="block"><strong>Math Practice</strong><span>20 min • Teacher Time</span></div></div>
+      <div class="day"><b>Wednesday</b><div class="block"><strong>CKLA Skills</strong><span>20 min • Teacher Time</span></div><div class="block family"><strong>Pan-African Curriculum</strong><span>25 min • Family Learning</span></div><div class="block independent"><strong>Art / Movement</strong><span>20 min • Choice</span></div></div>
+      <div class="day"><b>Thursday</b><div class="block"><strong>CKLA Skills</strong><span>20 min • Teacher Time</span></div><div class="block independent"><strong>Khan Academy Kids</strong><span>15 min • Independent</span></div><div class="block"><strong>Math Practice</strong><span>20 min • Teacher Time</span></div></div>
+      <div class="day"><b>Friday</b><div class="block"><strong>Reading Review</strong><span>15 min • Teacher Time</span></div><div class="block family"><strong>Financial Literacy</strong><span>25 min • Family Learning</span></div><div class="block independent"><strong>Choice / Catch-Up</strong><span>20 min • Flexible</span></div></div>
+    </div>
+
+    <div class="notice">
+      <div class="noticeicon">✦</div>
+      <div><div class="eyebrow">BLOOM NOTICED</div><h3 style="margin-bottom:4px">A starter schedule can look great on paper and still ask a parent to be in two places at once.</h3><p>If another child also needs Teacher Time Tuesday morning, Bloom can protect one-on-one teaching time and place meaningful independent work or a Bloom Basket for the other learner.</p></div>
+      <a class="btn btn-navy" href="#personalize">See What Bloom Would Change →</a>
+    </div>
+  </section>
+
+  <section class="section paidpreview" id="personalize">
+    <div class="eyebrow" style="color:#afd0b8">THE PAID VALUE STARTS HERE</div><h2>Free Bloom organizes curriculum. Paid Bloom coordinates the family.</h2>
+    <p class="lead">The upgrade is not “more resource links.” It is deeper personalization and ongoing family orchestration.</p>
+    <div class="featuregrid">
+      <div class="feature"><b>Protect Teacher Time</b><span>Coordinate multiple learners so the parent is not double-booked.</span></div>
+      <div class="feature"><b>Work Around Real Life</b><span>Use appointments, activities, fixed commitments, and household rhythms.</span></div>
+      <div class="feature"><b>Balance the Whole Day</b><span>Consider learning, movement, screens, meals, and responsibilities.</span></div>
+      <div class="feature"><b>Adapt the Week</b><span>Re-plan when a day runs long or something gets missed.</span></div>
+      <div class="feature"><b>Remember the Family</b><span>Carry forward preferences, selected curriculum, and completed work.</span></div>
+      <div class="feature"><b>Reduce Prep Load</b><span>Turn scheduled curriculum into a weekly parent preparation queue.</span></div>
+    </div>
+    <div class="forecast">
+      <div class="forecastcard"><div class="eyebrow">FULL FAMILY SETUP</div><h3>Bloom learns the household.</h3><p>Family structure, ages, schedules, school model, food preferences, movement, responsibilities, goals, desired household feel, and mental-load pain points.</p></div>
+      <div class="forecastcard"><div class="eyebrow">YOUR BLOOM FORECAST</div><h3>Bloom shows what it would prioritize.</h3><p>A starter family rhythm, recommended modules, learning settings, meal and wellness setup, plus “Bloom Noticed” insights explaining what the system would do next.</p><div class="modulechips"><span>Bloom Academy</span><span>Bloom Athletics</span><span>Bloom Meals</span><span>Bloom Family Fit</span></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="prep">
+    <div class="sectionhead"><div><div class="eyebrow">PRINT + PREP</div><h2>Know what to print, gather, and review before the week starts.</h2><p class="lead">This is where the parent guide becomes operational—not another file hiding in a download folder.</p></div><span class="pill">Week of Aug 24</span></div>
+    <div class="prepqueue">
+      <div class="queuecard"><h3>For the Parent</h3>
+        <div class="checkline"><span class="box"></span><div><b>CKLA Teacher Guide • Lessons 11–15</b><div class="where">Review / print • Green curriculum binder</div></div></div>
+        <div class="checkline"><span class="box"></span><div><b>Pan-African parent guidance • Week 3</b><div class="where">Review discussion prompts • Digital</div></div></div>
+        <div class="checkline"><span class="box"></span><div><b>U.S. Currency lesson plan</b><div class="where">Print teacher lesson + gather play money</div></div></div>
+      </div>
+      <div class="queuecard"><h3>For the Learner</h3>
+        <div class="checkline"><span class="box"></span><div><b>CKLA student activity pages</b><div class="where">Print • Weekly binder</div></div></div>
+        <div class="checkline"><span class="box"></span><div><b>CKLA reader</b><div class="where">Gather • Homeschool bookshelf</div></div></div>
+        <div class="checkline"><span class="box"></span><div><b>Financial literacy activity</b><div class="where">Print • Bloom Basket</div></div></div>
+      </div>
+    </div>
+    <div class="notice" style="background:#f5faf6;border-color:#cfe0d2"><div class="noticeicon" style="background:#e2f0e5">✓</div><div><div class="eyebrow">BLOOM FAMILY EXAMPLE</div><h3 style="margin-bottom:4px">Both children need construction paper this week.</h3><p>Bloom Family can consolidate shared supplies and parent prep across multiple children so the household gathers once instead of duplicating the work.</p></div><a class="btn btn-secondary" href="#plans">Compare Plans</a></div>
+  </section>
+
+  <section class="section" id="plans">
+    <div class="eyebrow">CHOOSE HOW MUCH HELP YOU WANT</div><h2>Start free. Upgrade when coordination becomes the hard part.</h2>
+    <p class="lead">The free tools remain useful. Paid Bloom begins when the family wants deeper personalization, memory, and orchestration.</p>
+    <div class="plangrid">
+      <article class="plan"><div class="plantag">FREE</div><h3>Bloom Free</h3><div class="price">$0</div><div class="planwho"><b>1 child.</b> Best for finding, organizing, and starting with free curriculum.</div><ul><li>Free Resource Vault</li><li>My School curriculum shelf</li><li>Basic starter schedule</li><li>Curriculum component visibility</li></ul><a class="btn btn-secondary" href="#vault">Start Free</a></article>
+      <article class="plan featured"><div class="plantag">PERSONALIZED</div><h3>Bloom Pro</h3><div class="price">$12 <small>/ month</small></div><div class="planwho"><b>1 adult + up to 3 children.</b> Best for families ready for deeper personalization and adaptive planning.</div><ul><li>Everything in Free</li><li>Full Family Setup</li><li>Your Bloom Forecast</li><li>Personalized Bloom Home</li><li>Adaptive scheduling intelligence</li><li>Weekly Print + Prep queue</li></ul><a class="btn btn-primary" href="#home">Choose Pro →</a></article>
+      <article class="plan"><div class="plantag">WHOLE FAMILY</div><h3>Bloom Family</h3><div class="price">$19 <small>/ month</small></div><div class="planwho"><b>2 adults + up to 6 children.</b> Best for multi-child and whole-household coordination.</div><ul><li>Everything in Pro</li><li>Full multi-child orchestration</li><li>Shared prep and supply consolidation</li><li>Deeper whole-family coordination</li><li>Household-level Bloom Noticed insights</li></ul><a class="btn btn-navy" href="#home">Choose Family →</a></article>
+    </div>
+    <div class="addon"><b>Larger household?</b> Add a Large Family pack for <b>+$5/month</b> to unlock up to 3 additional child profiles. Additional packs can extend capacity in groups of three.</div>
+  </section>
+
+  <section class="closecta">
+    <div><div class="eyebrow" style="color:#afd0b8">THE BLOOM PROMISE</div><h2>Use free curriculum. Let Bloom make it usable.</h2><p>The resources do not need to be expensive for the family system around them to be valuable. Bloom earns the upgrade by reducing the work of choosing, scheduling, preparing, coordinating, and adapting.</p></div>
+    <div class="actions"><a class="btn" style="background:#fff;color:var(--navy)" href="#vault">Explore Free</a><a class="btn" style="background:var(--green);color:#fff;border-color:var(--green)" href="#plans">See Plans</a></div>
+  </section>
+</main>
+</div>
+</body>
+</html>

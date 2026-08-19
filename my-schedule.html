@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Schedule — Bloom Family Tech</title>
+  <meta name="description" content="Your starter homeschool week—built from the resources you've chosen.">
+  <link rel="stylesheet" href="assets/family-tech-v4.css">
+</head>
+<body>
+<div id="bloom-eco-nav"></div>
+<div class="page-wrap">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">MY SCHEDULE</div>
+        <h1 id="scheduleTitle">Your starter week</h1>
+        <p class="lead">The free version turns chosen resources into a clear starting rhythm. It gives the family something useful before asking them to buy anything.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="schedule-placeholder" id="schedulePlaceholder">
+        <h3>Your schedule is taking shape</h3>
+        <p id="scheduleMessage">Complete Starter Setup and add resources to My School. Your personalized starter schedule will appear here in a future update.</p>
+        <div class="actions" style="justify-content:center;margin-top:20px;">
+          <a class="btn btn-primary" href="starter-setup.html">Complete Starter Setup</a>
+          <a class="btn btn-secondary" href="my-school.html">Review My School</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="page-footer">
+      <a href="print-prep.html">Print + Prep</a>
+      &nbsp;&middot;&nbsp;
+      <a href="index.html">Bloom Home</a>
+    </div>
+</div>
+<script src="scripts/bloom-resources-data.js"></script>
+<script src="scripts/bloom-school.js"></script>
+<script src="scripts/bloom-nav.js"></script>
+<script>
+  BloomNav.init({ module: "academy", page: "schedule" });
+  (function () {
+    var setup = BloomSchool.getStarterSetup();
+    var selections = BloomSchool.getSelections();
+    var title = document.getElementById("scheduleTitle");
+    var msg = document.getElementById("scheduleMessage");
+    if (setup.learnerName && title) {
+      title.textContent = setup.learnerName + "'s Starter Week";
+    }
+    if (selections.length && setup.learnerName && msg) {
+      msg.textContent =
+        "You have " + selections.length + " resource" + (selections.length === 1 ? "" : "s") +
+        " in My School and setup saved for " + setup.learnerName + ". " +
+        "Schedule generation is coming soon—your choices are saved and ready.";
+    }
+  })();
+</script>
+</body>
+</html>
